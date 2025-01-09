@@ -1,4 +1,4 @@
-# Apollonia Dental Practice Employee Management CRUD Web App
+# Apollonia Dental Practice Employee Management
 
 ## Overview
 
