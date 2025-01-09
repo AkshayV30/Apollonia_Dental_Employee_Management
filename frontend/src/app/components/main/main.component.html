@@ -1,0 +1,44 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false"
+  >
+    <mat-toolbar class="menu-headline">
+      <h2>Apollonia Dental Practice</h2></mat-toolbar
+    >
+    <mat-nav-list>
+      <a mat-list-item href="#">Home</a>
+      <a mat-list-item href="#">About</a>
+      <a mat-list-item href="#">Contact</a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      @if (isHandset$ | async) {
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+      >
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      }
+      <h1>Apollonia Dental Practice Employee Managment</h1>
+    </mat-toolbar>
+    <!-- Add Content Here -->
+    <div class="contents-container">
+      <!-- <app-display /> -->
+
+      <!-- <app-login-page /> -->
+      <!-- <app-employees-list /> -->
+
+      <router-outlet />
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

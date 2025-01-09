@@ -1,0 +1,85 @@
+<!-- <p>employees-list works!</p> -->
+
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Employees List</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <table mat-table [dataSource]="dataSource">
+      <ng-container matColumnDef="col-first-name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>First Name</th>
+        <td mat-cell *matCellDef="let element">{{ element.first_name }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="col-last-name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Last Name</th>
+        <td mat-cell *matCellDef="let element">{{ element.last_name }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="col-date-of-joining">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Date of Joining
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.date_of_joining }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="col-years-of-experience">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Years of Experience
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.years_of_experience }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="col-background-info">
+        <th mat-header-cell *matHeaderCellDef>Background Info</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.background_info }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="col-departments">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Departments</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.departments }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="col-action">
+        <th mat-header-cell *matHeaderCellDef>Action</th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-raised-button [routerLink]="['edit/', element._id]">
+            Edit
+          </button>
+          <button
+            mat-raised-button
+            color="warn"
+            (click)="deleteEmployee(element._id || '')"
+          >
+            Delete
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+
+    <mat-paginator
+      #paginator
+      [pageSizeOptions]="[5, 10, 20]"
+      showFirstLastButtons
+      aria-label="Select page"
+    >
+    </mat-paginator>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-raised-button color="primary" [routerLink]="['new']">
+      Add a New Employee
+    </button>
+  </mat-card-actions>
+</mat-card>

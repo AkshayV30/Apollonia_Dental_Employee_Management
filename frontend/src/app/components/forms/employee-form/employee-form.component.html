@@ -1,0 +1,46 @@
+<p>employee-form works!</p>
+
+<form
+  class="employee-form"
+  autocomplete="off"
+  [formGroup]="employeeForm"
+  (submit)="submitForm()"
+>
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input matInput placeholder="Name" formControlName="first_name" required />
+    @if (first_name.invalid) {
+    <mat-error>Name must be at least 3 characters long.</mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Position</mat-label>
+    <!--   <input
+      matInput
+      placeholder="Position"
+      formControlName="position"
+      required
+    />
+ @if (position.invalid) {
+    <mat-error>Position must be at least 5 characters long.</mat-error>
+    } -->
+  </mat-form-field>
+
+  <mat-radio-group formControlName="level" aria-label="Select an option">
+    <mat-radio-button name="level" value="junior" required
+      >Junior</mat-radio-button
+    >
+    <mat-radio-button name="level" value="mid">Mid</mat-radio-button>
+    <mat-radio-button name="level" value="senior">Senior</mat-radio-button>
+  </mat-radio-group>
+  <br />
+  <button
+    mat-raised-button
+    color="primary"
+    type="submit"
+    [disabled]="employeeForm.invalid"
+  >
+    Add
+  </button>
+</form>
