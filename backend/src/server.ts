@@ -1,11 +1,14 @@
-import * as dotenv from "dotenv";
 import express from "express";
 import cors from "cors";
-import { connectToDatabase } from "./database/database";
-import { employeeRouter } from "./routes/routes";
 
-// Load environment variables from the .env file,
-dotenv.config();
+import { connectToDatabase } from "./database/database";
+import { employeeRouter } from "./routes/employee.routes";
+import { config } from "./config/config";
+
+// import helmet from "helmet";
+// import compression from "compression";
+// import rateLimit from "express-rate-limit";
+// import morgan from "morgan";
 
 // const { DATABASE_MODE, MONGO_URI_LOCAL, MONGO_URI_ATLAS } = process.env;
 
@@ -21,26 +24,45 @@ dotenv.config();
 
 // console.log(`Starting app in '${DATABASE_MODE || "local"}' mode...`);
 
-const uri = "mongodb://localhost:27017/AlponiaDental_DB";
+async function startServer() {
+  try {
+    await connectToDatabase(config.DATABASE_URI);
 
-connectToDatabase(uri)
-  .then(() => {
     const app = express();
 
-    //Enable CORS Middleware
     app.use(cors());
-    // Middleware to parse JSON
     app.use(express.json());
 
-    app.use("/employees", employeeRouter);
-
-    // start the Express server
-    const PORT = process.env.PORT || 5200;
-    app.listen(PORT, () => {
-      console.log(`Server running at http://localhost : ${PORT} ...`);
+    app.get("/", (_req, res) => {
+      res.send(" Welcome to the Express Server!");
     });
-  })
-  .catch((error) => {
-    console.error("Failed to connect to the database:", error);
+
+    app.use("/v1/employees", employeeRouter);
+
+    app.use((_req, res) => {
+      res.status(404).json({ error: "Route not found" });
+    });
+
+    const server = app.listen(config.PORT, () => {
+      console.log(`Server running on port ${config.PORT}`);
+    });
+
+    process.on("SIGTERM", () => {
+      console.log("SIGTERM received. Closing server...");
+      server.close(() => {
+        console.log("Server closed.");
+        process.exit(0);
+      });
+    });
+
+    process.on("SIGINT", () => {
+      console.log("SIGINT received. Shutting down...");
+      server.close(() => process.exit(0));
+    });
+  } catch (error) {
+    console.error("Failed to start server:", error);
     process.exit(1);
-  });
+  }
+}
+
+startServer();

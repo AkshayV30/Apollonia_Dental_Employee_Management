@@ -50,8 +50,8 @@ export class LoginPageComponent implements OnInit {
 
   // Default credentials
   private defaultCredentials = {
-    loginId: 'admin123',
-    passKey: 'pass123',
+    loginId: 'admin',
+    passKey: 'admin',
   };
 
   // Reactive form group

@@ -1,13 +1,23 @@
-import * as express from "express";
+import express from "express";
 import { ObjectId } from "mongodb";
 import { collections } from "../database/database";
 
-export const employeeRouter = express.Router();
+// import Joi from "joi";
 
-employeeRouter.use(express.json());
+export const employeeRouter = express.Router();
+// employeeRouter.use(express.json());
+
+// Define validation schema using Joi
+// const employeeSchema = Joi.object({
+//   first_name: Joi.string().required(),
+//   last_name: Joi.string().required(),
+//   date_of_joining: Joi.string().isoDate().required(),
+//   years_of_experience: Joi.number().integer().min(0).required(),
+//   background_info: Joi.string().required(),
+// });
 
 /** Get all employees */
-employeeRouter.get("/v1/", async (_req, res) => {
+employeeRouter.get("/", async (_req, res) => {
   try {
     const employees = await collections?.employees?.find({}).toArray();
     res.status(200).json(employees);
@@ -19,7 +29,7 @@ employeeRouter.get("/v1/", async (_req, res) => {
 });
 
 /** Get an employee by ID */
-employeeRouter.get("/v1/:id", async (req, res) => {
+employeeRouter.get("/:id", async (req, res) => {
   try {
     const id = req.params.id;
     const query = { _id: new ObjectId(id) };
@@ -38,7 +48,7 @@ employeeRouter.get("/v1/:id", async (req, res) => {
 });
 
 /** Create a new employee */
-employeeRouter.post("/v1/", async (req, res) => {
+employeeRouter.post("/", async (req, res) => {
   try {
     const employee = req.body;
 
@@ -71,7 +81,7 @@ employeeRouter.post("/v1/", async (req, res) => {
 });
 
 /** Update an employee by ID */
-employeeRouter.put("/v1/:id", async (req, res) => {
+employeeRouter.put("/:id", async (req, res) => {
   try {
     const id = req.params.id;
     const employee = req.body;
@@ -96,7 +106,7 @@ employeeRouter.put("/v1/:id", async (req, res) => {
 });
 
 /** Delete an employee by ID */
-employeeRouter.delete("/v1/:id", async (req, res) => {
+employeeRouter.delete("/:id", async (req, res) => {
   try {
     const id = req.params.id;
     const query = { _id: new ObjectId(id) };
@@ -118,7 +128,7 @@ employeeRouter.delete("/v1/:id", async (req, res) => {
 });
 
 /** Add an employee to a department */
-employeeRouter.post("/v1/:id/departments", async (req, res) => {
+employeeRouter.post("/:id/departments", async (req, res) => {
   try {
     const employeeId = req.params.id;
     const { departmentId } = req.body;
@@ -150,7 +160,7 @@ employeeRouter.post("/v1/:id/departments", async (req, res) => {
 });
 
 /** Get all departments of an employee */
-employeeRouter.get("/v1/:id/departments", async (req, res) => {
+employeeRouter.get("/:id/departments", async (req, res) => {
   try {
     const employeeId = req.params.id;
     const employeeQuery = { _id: new ObjectId(employeeId) };

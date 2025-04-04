@@ -39,8 +39,8 @@ import {
   styleUrl: './employees-list.component.scss',
 })
 export class EmployeesListComponent implements OnInit {
-  // employees$ = {} as WritableSignal<Employee[]>;
-  // employees: Employee[] = [];
+  employees$ = {} as WritableSignal<Employee[]>;
+  employees: Employee[] = [];
 
   dataSource!: MatTableDataSource<Employee>;
 
@@ -61,10 +61,11 @@ export class EmployeesListComponent implements OnInit {
   constructor(private employeesService: EmployeeService) {}
 
   ngOnInit() {
-    this.employeesService.getEmployees().subscribe((employees) => {
+    this.employeesService.getEmployees().subscribe((employees: Employee[]) => {
       this.dataSource = new MatTableDataSource<Employee>(employees);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
+      this.employees = employees;
     });
   }
 

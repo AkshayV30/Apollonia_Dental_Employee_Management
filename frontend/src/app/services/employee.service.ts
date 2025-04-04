@@ -21,22 +21,37 @@ export class EmployeeService {
 
   constructor(private httpClient: HttpClient) {}
 
-  getEmployees() {
-    this.httpClient
-      .get<Employee[]>(`${this.url}/v1/`)
-      .subscribe((employees) => {
-        this.employees$.set(employees);
-      });
-  }
+  // getEmployees() {
+  //   this.httpClient
+  //     .get<Employee[]>(`${this.url}/v1/`)
+  //     .subscribe((employees) => {
+  //       this.employees$.set(employees);
+  //     });
+  // }
 
-  getEmployee(id: string) {
-    this.httpClient
-      .get<Employee>(`${this.url}/v1/:${id}`)
-      .subscribe((employee) => {
-        this.employee$.set(employee);
-        return this.employee$();
-      });
-  }
+  // getEmployee(id: string) {
+  //   this.httpClient
+  //     .get<Employee>(`${this.url}/v1/:${id}`)
+  //     .subscribe((employee) => {
+  //       this.employee$.set(employee);
+  //       return this.employee$();
+  //     });
+  // }
+
+ // Change the return type to Observable<Employee[]>
+ getEmployees(): Observable<Employee[]> {
+  return this.httpClient.get<Employee[]>(`${this.url}/v1/employees`);
+}
+
+getEmployee(id: string) {
+  return this.httpClient
+    .get<Employee>(`${this.url}/v1/employees/${id}`)
+    .subscribe((employee) => {
+      this.employee$.set(employee);
+      return this.employee$();
+    });
+}
+
 
   createEmployee(employee: Employee) {
     return this.httpClient.post(`${this.url}/v1/`, employee, {
