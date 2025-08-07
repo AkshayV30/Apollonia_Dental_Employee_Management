@@ -6,11 +6,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { EmployeeService } from '../../services/employee.service';
 
 @Component({
-  selector: 'app-edit-employee',
-  standalone: true,
-  imports: [EmployeeFormComponent, MatCardModule],
-  templateUrl: './edit-employee.component.html',
-  styleUrl: './edit-employee.component.scss',
+    selector: 'app-edit-employee',
+    imports: [EmployeeFormComponent, MatCardModule],
+    templateUrl: './edit-employee.component.html',
+    styleUrl: './edit-employee.component.scss'
 })
 export class EditEmployeeComponent implements OnInit {
   employee = {} as WritableSignal<Employee>;

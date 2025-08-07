@@ -5,11 +5,10 @@ import { MatSortModule, MatSort } from '@angular/material/sort';
 import { DisplayDataSource, DisplayItem } from './display-datasource';
 
 @Component({
-  selector: 'app-display',
-  templateUrl: './display.component.html',
-  styleUrl: './display.component.scss',
-  standalone: true,
-  imports: [MatTableModule, MatPaginatorModule, MatSortModule]
+    selector: 'app-display',
+    templateUrl: './display.component.html',
+    styleUrl: './display.component.scss',
+    imports: [MatTableModule, MatPaginatorModule, MatSortModule]
 })
 export class DisplayComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;

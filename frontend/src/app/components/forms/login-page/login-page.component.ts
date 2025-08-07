@@ -28,22 +28,21 @@ import {
 } from '@angular/material/bottom-sheet';
 
 @Component({
-  selector: 'app-login-page',
-  standalone: true,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    MatInputModule,
-    MatButtonModule,
-    MatSelectModule,
-    MatRadioModule,
-    MatCardModule,
-    ReactiveFormsModule,
-    MatIconModule,
-    MatFormFieldModule,
-    MatBottomSheetModule,
-  ],
-  templateUrl: './login-page.component.html',
-  styleUrl: './login-page.component.scss',
+    selector: 'app-login-page',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        MatInputModule,
+        MatButtonModule,
+        MatSelectModule,
+        MatRadioModule,
+        MatCardModule,
+        ReactiveFormsModule,
+        MatIconModule,
+        MatFormFieldModule,
+        MatBottomSheetModule,
+    ],
+    templateUrl: './login-page.component.html',
+    styleUrl: './login-page.component.scss'
 })
 export class LoginPageComponent implements OnInit {
   private fb = inject(FormBuilder);

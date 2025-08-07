@@ -18,23 +18,21 @@ import { EmployeesListComponent } from '../employees-list/employees-list.compone
 import { RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'app-main',
-  templateUrl: './main.component.html',
-  styleUrl: './main.component.scss',
-  standalone: true,
-  imports: [
-    MatToolbarModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatListModule,
-    MatIconModule,
-    AsyncPipe,
-    DisplayComponent,
-
-    LoginPageComponent,
-    EmployeesListComponent,
-    RouterOutlet,
-  ],
+    selector: 'app-main',
+    templateUrl: './main.component.html',
+    styleUrl: './main.component.scss',
+    imports: [
+        MatToolbarModule,
+        MatButtonModule,
+        MatSidenavModule,
+        MatListModule,
+        MatIconModule,
+        AsyncPipe,
+        DisplayComponent,
+        LoginPageComponent,
+        EmployeesListComponent,
+        RouterOutlet,
+    ]
 })
 export class MainComponent {
   private breakpointObserver = inject(BreakpointObserver);

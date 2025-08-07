@@ -8,17 +8,16 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
-  selector: 'app-employee-form',
-  standalone: true,
-  imports: [
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatRadioModule,
-    MatButtonModule,
-  ],
-  templateUrl: './employee-form.component.html',
-  styleUrl: './employee-form.component.scss',
+    selector: 'app-employee-form',
+    imports: [
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatRadioModule,
+        MatButtonModule,
+    ],
+    templateUrl: './employee-form.component.html',
+    styleUrl: './employee-form.component.scss'
 })
 export class EmployeeFormComponent {
   initialState = input<Employee>();

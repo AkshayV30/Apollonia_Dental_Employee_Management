@@ -25,18 +25,17 @@ import {
 } from '../forms/display/display-datasource';
 
 @Component({
-  selector: 'app-employees-list',
-  standalone: true,
-  imports: [
-    RouterModule,
-    MatTableModule,
-    MatButtonModule,
-    MatCardModule,
-    MatSortModule,
-    MatPaginatorModule,
-  ],
-  templateUrl: './employees-list.component.html',
-  styleUrl: './employees-list.component.scss',
+    selector: 'app-employees-list',
+    imports: [
+        RouterModule,
+        MatTableModule,
+        MatButtonModule,
+        MatCardModule,
+        MatSortModule,
+        MatPaginatorModule,
+    ],
+    templateUrl: './employees-list.component.html',
+    styleUrl: './employees-list.component.scss'
 })
 export class EmployeesListComponent implements OnInit {
   // employees$ = {} as WritableSignal<Employee[]>;

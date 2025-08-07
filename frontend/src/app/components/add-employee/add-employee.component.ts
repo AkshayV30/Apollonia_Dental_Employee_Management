@@ -8,11 +8,10 @@ import { EmployeeService } from '../../services/employee.service';
 import { EmployeeFormComponent } from '../forms/employee-form/employee-form.component';
 
 @Component({
-  selector: 'app-add-employee',
-  standalone: true,
-  imports: [EmployeeFormComponent, MatCardModule],
-  templateUrl: './add-employee.component.html',
-  styleUrl: './add-employee.component.scss',
+    selector: 'app-add-employee',
+    imports: [EmployeeFormComponent, MatCardModule],
+    templateUrl: './add-employee.component.html',
+    styleUrl: './add-employee.component.scss'
 })
 export class AddEmployeeComponent {
   constructor(
