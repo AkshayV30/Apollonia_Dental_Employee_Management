@@ -1,4 +1,8 @@
-
+/public/images
+*.jpg
+*.png
+*.webp
+*.gif
 
 # Node
 /node_modules
