@@ -1,26 +1,14 @@
-import mongoose, { Schema, Document } from "mongoose";
+import mongoose from "mongoose";
 
-export interface IEmployee extends Document {
-  name: string;
-  email: string;
-  departmentId: mongoose.Types.ObjectId;
-  phone?: string;
-}
+const employeeSchema = new mongoose.Schema({
+  employee_id: String,
+  first_name: String,
+  last_name: String,
+  date_of_joining: Date,
+  department_id: String,
+  specialization: String,
+  years_of_experience: Number,
+  background_info: String,
+});
 
-const employeeSchema: Schema<IEmployee> = new Schema(
-  {
-    name: { type: String, required: true },
-    email: { type: String, required: true, unique: true },
-    departmentId: {
-      type: Schema.Types.ObjectId,
-      ref: "Department",
-      required: true,
-    },
-    phone: { type: String },
-  },
-  {
-    timestamps: true,
-  }
-);
-
-export const Employee = mongoose.model<IEmployee>("Employee", employeeSchema);
+export default mongoose.model("Employee", employeeSchema);
