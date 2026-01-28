@@ -11,11 +11,9 @@ export async function initializeDatabase() {
       };
 
     case "local-mongo":
-      await connectMongo();
-      return { mode: "local-mongo" };
     case "cloud-atlas-mongo":
       await connectMongo();
-      return { mode: "cloud-atlas-mongo" };
+      return { mode: "mongo" };
 
     default:
       throw new Error(`Unsupported DATABASE_MODE: ${CONFIG.DB_MODE}`);

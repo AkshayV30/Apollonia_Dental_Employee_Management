@@ -1,55 +1,81 @@
 import mongoose from "mongoose";
-import { CONFIG } from "../env";
 import chalk from "chalk";
+import { CONFIG } from "../env";
 
 /**
  * connectMongo()
- * -----------
- * Establishes a connection to MongoDB using Mongoose.
+ * ---------------
+ * Establishes MongoDB connection and reports DB readiness.
  *
- * Key responsibilities of this function:
- * 1. Attempt connecting to MongoDB using the provided URI.
- * 2. Verify the database name and connection status.
- * 3. Check if the database already exists.
- * 4. Log helpful, color-coded messages for debugging and monitoring.
- * 5. Gracefully handle both initial connection errors and runtime errors.
+ * Behavior:
+ * - Connects to MongoDB (local or cloud)
+ * - Detects whether database already exists
+ * - Does NOT recreate DB if it exists
+ * - Logs READY state clearly
  *
- * MongoDB behavior note:
- * - MongoDB creates a database automatically on first write.
- * - Therefore, we check existence using admin.listDatabases().
- *
- * Returns:
- * - The active Mongoose connection object.
- * - This object is used by the rest of the application (e.g., server.js).
+ * MongoDB note:
+ * - MongoDB creates databases lazily (on first write)
+ * - We only detect existence, never force creation
  */
-
-export async function connectMongo() {
+export async function connectMongo(): Promise<typeof mongoose> {
   const mongoURI =
     CONFIG.DB_MODE === "local-mongo" ? CONFIG.MONGO_LOCAL : CONFIG.MONGO_ATLAS;
 
-  if (!mongoURI) throw new Error("Mongo URI missing");
+  if (!mongoURI) {
+    throw new Error(" MongoDB URI missing in environment variables");
+  }
 
   try {
-    console.log(chalk.cyanBright("\n🔍 Checking MongoDB connection..."));
-    console.log(chalk.gray(`➡️ Connection URI: ${mongoURI}`));
+    console.log(chalk.cyanBright("\n🔌 Connecting to MongoDB..."));
+    console.log(chalk.gray(` Mode: ${CONFIG.DB_MODE}`));
 
-    await mongoose.connect(mongoURI, { serverSelectionTimeoutMS: 8000 });
+    await mongoose.connect(mongoURI, {
+      serverSelectionTimeoutMS: 8000,
+    });
 
-    const { name, host, port } = mongoose.connection;
+    const connection = mongoose.connection;
+    const { name, host, port } = connection;
 
     console.log(
-      chalk.greenBright(
-        `✅ MongoDB connected successfully → ${name} @ ${host}:${port}`,
-      ),
+      chalk.greenBright(` MongoDB connection established → ${host}:${port}`),
     );
 
-    mongoose.connection.on("error", (err) => {
-      console.error(chalk.redBright("❌ MongoDB runtime error:"), err.message);
+    /**
+     * Check database existence
+     * ------------------------
+     * MongoDB only creates DB on first write.
+     * We inspect existing databases via admin API.
+     */
+    const admin = connection.db.admin();
+    const { databases } = await admin.listDatabases();
+    const dbExists = databases.some((db) => db.name === name);
+
+    if (dbExists) {
+      console.log(chalk.blueBright(` Database "${name}" already exists`));
+    } else {
+      console.log(chalk.yellowBright(` Database "${name}" does not exist yet`));
+      console.log(
+        chalk.greenBright(
+          `MongoDB will create "${name}" automatically on first write`,
+        ),
+      );
+    }
+
+    /**
+     * Runtime error listener
+     */
+    connection.on("error", (err) => {
+      console.error(chalk.redBright(" MongoDB runtime error:"), err.message);
     });
+
+    console.log(
+      chalk.greenBright(` DATABASE READY → ${name} (${CONFIG.DB_MODE})\n`),
+    );
+
     return mongoose;
   } catch (err: any) {
     console.error(
-      chalk.redBright("❌ MongoDB initial connection failed:"),
+      chalk.redBright("MongoDB initialization failed:"),
       err.message,
     );
     throw err;
