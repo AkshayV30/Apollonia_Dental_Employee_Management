@@ -26,3 +26,5 @@ Thumbs.db
 
 
 .env
+
+/src/configs/sample_data/*.json
