@@ -1,0 +1,604 @@
+{
+  "employees": [
+    {
+      "employee_id": "EMP001",
+      "first_name": "Lisa",
+      "last_name": "Harris",
+      "profile_image": "/images/employees/female/emp-female (1).jpg",
+      "date_of_birth": "1992-05-12",
+      "date_of_joining": "2020-04-15",
+      "department_id": "DEP003",
+      "specialization": "Restorative Dentistry",
+      "department_image": "/images/departments/restorative.jpg",
+      "years_of_experience": 4,
+      "background_info": "Specialist in dental implants and cosmetic orthodontics.",
+      "contact_info": {
+        "phone": "+1-202-555-0147",
+        "email": "lisa.harris@apolloniadental.com",
+        "address": "221B Park Lane, Springfield, IL"
+      },
+      "license_number": "DNT-IL-2020456",
+      "trainings": [
+        {
+          "training_name": "Advanced Dental Implants",
+          "date": "2021-06-15",
+          "certificate_url": "https://example.com/certificates/lisa_implants.pdf"
+        },
+        {
+          "training_name": "Aesthetic Orthodontics",
+          "date": "2022-09-20",
+          "certificate_url": "https://example.com/certificates/lisa_aesthetics.pdf"
+        }
+      ],
+      "projects": [
+        {
+          "project_id": "PRJ001",
+          "project_name": "Implant Retention Research",
+          "status": "Ongoing"
+        }
+      ],
+      "patients_assigned": [
+        {
+          "patient_id": "PAT001",
+          "patient_name": "Emma Johnson",
+          "patient_image": "/images/patients/female/patients-female (1).jpg",
+          "treatment_notes": "Dental implant placement - ongoing follow-up"
+        },
+        {
+          "patient_id": "PAT005",
+          "patient_name": "David Parker",
+          "patient_image": "/images/patients/male/patients-male (1).jpg",
+          "treatment_notes": "Crown adjustment - scheduled next week"
+        }
+      ],
+      "revenue": { "per_patient": 450, "total": 1350 },
+      "documents": [
+        { "type": "ID Proof", "url": "https://example.com/docs/lisa_id.pdf" },
+        {
+          "type": "Employment Contract",
+          "url": "https://example.com/docs/lisa_contract.pdf"
+        }
+      ]
+    },
+    {
+      "employee_id": "EMP002",
+      "first_name": "Alfred",
+      "last_name": "Christensen",
+      "profile_image": "/images/employees/male/emp-male (1).jpg",
+      "date_of_birth": "1987-03-08",
+      "date_of_joining": "2018-07-23",
+      "department_id": "DEP005",
+      "department_image": "/images/departments/orthodontics.webp",
+      "specialization": "Orthodontics",
+      "years_of_experience": 6,
+      "background_info": "Experienced in routine dental checkups and preventive care.",
+      "contact_info": {
+        "phone": "+1-202-555-0188",
+        "email": "alfred.christensen@apolloniadental.com",
+        "address": "742 Evergreen Terrace, Springfield, IL"
+      },
+      "license_number": "DNT-IL-2018345",
+      "trainings": [
+        {
+          "training_name": "Preventive Dental Care",
+          "date": "2019-08-12",
+          "certificate_url": "https://example.com/certificates/alfred_preventive.pdf"
+        },
+        {
+          "training_name": "Advanced Orthodontics",
+          "date": "2021-04-18",
+          "certificate_url": "https://example.com/certificates/alfred_orthodontics.pdf"
+        }
+      ],
+      "projects": [
+        {
+          "project_id": "PRJ002",
+          "project_name": "Clear Aligner Treatment Optimization",
+          "status": "Completed"
+        }
+      ],
+      "patients_assigned": [
+        {
+          "patient_id": "PAT002",
+          "patient_name": "Sophia Lee",
+          "patient_image": "/images/patients/female/patients-female (2).jpg",
+          "treatment_notes": "Braces adjustment - next visit in 2 weeks"
+        },
+        {
+          "patient_id": "PAT006",
+          "patient_name": "Michael Brown",
+          "patient_image": "/images/patients/male/patients-male (2).jpg",
+          "treatment_notes": "Clear aligner fitting - ongoing"
+        }
+      ],
+      "revenue": { "per_patient": 500, "total": 1000 },
+      "documents": [
+        { "type": "ID Proof", "url": "https://example.com/docs/alfred_id.pdf" },
+        {
+          "type": "Employment Contract",
+          "url": "https://example.com/docs/alfred_contract.pdf"
+        }
+      ]
+    },
+    {
+      "employee_id": "EMP003",
+      "first_name": "John",
+      "last_name": "Dudley",
+      "profile_image": "/images/employees/male/emp-male (2).jpg",
+      "date_of_birth": "1990-09-14",
+      "date_of_joining": "2019-11-05",
+      "department_id": "DEP001",
+      "department_image": "/images/departments/generalDentistry.jpg",
+      "specialization": "General Dentistry",
+      "years_of_experience": 5,
+      "background_info": "Focuses on restorative procedures such as fillings and crowns.",
+      "contact_info": {
+        "phone": "+1-202-555-0176",
+        "email": "john.dudley@apolloniadental.com",
+        "address": "14 Baker Street, Springfield, IL"
+      },
+      "license_number": "DNT-IL-2019567",
+      "trainings": [
+        {
+          "training_name": "Composite Filling Techniques",
+          "date": "2020-03-22",
+          "certificate_url": "https://example.com/certificates/john_composite.pdf"
+        },
+        {
+          "training_name": "Crown Fabrication and Fitting",
+          "date": "2021-11-10",
+          "certificate_url": "https://example.com/certificates/john_crown.pdf"
+        }
+      ],
+      "projects": [
+        {
+          "project_id": "PRJ003",
+          "project_name": "Durable Crown Material Research",
+          "status": "Ongoing"
+        }
+      ],
+      "patients_assigned": [
+        {
+          "patient_id": "PAT003",
+          "patient_name": "Liam Thompson",
+          "patient_image": "/images/patients/male/patients-male (3).jpg",
+          "treatment_notes": "Crown replacement scheduled for next month"
+        },
+        {
+          "patient_id": "PAT007",
+          "patient_name": "Ava Wilson",
+          "patient_image": "/images/patients/female/patients-female (3).jpg",
+          "treatment_notes": "Cavity filling completed - follow-up in 6 months"
+        }
+      ],
+      "revenue": { "per_patient": 400, "total": 800 },
+      "documents": [
+        { "type": "ID Proof", "url": "https://example.com/docs/john_id.pdf" },
+        {
+          "type": "Employment Contract",
+          "url": "https://example.com/docs/john_contract.pdf"
+        }
+      ]
+    },
+    {
+      "employee_id": "EMP004",
+      "first_name": "Danny",
+      "last_name": "Perez",
+      "profile_image": "/images/employees/male/emp-male (3).jpg",
+      "date_of_birth": "1994-03-18",
+      "date_of_joining": "2021-02-12",
+      "department_id": "DEP003",
+      "department_image": "/images/departments/restorative.jpg",
+      "specialization": "Restorative Dentistry",
+      "years_of_experience": 3,
+      "background_info": "Skilled in advanced restoration techniques and patient education.",
+      "contact_info": {
+        "phone": "+1-202-555-0164",
+        "email": "danny.perez@apolloniadental.com",
+        "address": "432 Oakwood Drive, Springfield, IL"
+      },
+      "license_number": "DNT-IL-2021789",
+      "trainings": [
+        {
+          "training_name": "Advanced Dental Restorations",
+          "date": "2021-07-14",
+          "certificate_url": "https://example.com/certificates/danny_restoration.pdf"
+        },
+        {
+          "training_name": "Patient Communication and Education",
+          "date": "2022-05-28",
+          "certificate_url": "https://example.com/certificates/danny_patientedu.pdf"
+        }
+      ],
+      "projects": [
+        {
+          "project_id": "PRJ004",
+          "project_name": "Composite Material Longevity Study",
+          "status": "Ongoing"
+        }
+      ],
+      "patients_assigned": [
+        {
+          "patient_id": "PAT009",
+          "patient_name": "Sophia Martinez",
+          "patient_image": "/images/patients/female/patients-female (4).jpg",
+          "treatment_notes": "Bridge restoration in progress"
+        },
+        {
+          "patient_id": "PAT012",
+          "patient_name": "Ethan Brooks",
+          "patient_image": "/images/patients/male/patients-male (4).jpg",
+          "treatment_notes": "Onlay fitting scheduled for next week"
+        }
+      ],
+      "revenue": { "per_patient": 500, "total": 1000 },
+      "documents": [
+        { "type": "ID Proof", "url": "https://example.com/docs/danny_id.pdf" },
+        {
+          "type": "Employment Contract",
+          "url": "https://example.com/docs/danny_contract.pdf"
+        }
+      ]
+    },
+    {
+      "employee_id": "EMP005",
+      "first_name": "Sarah",
+      "last_name": "Alvarez",
+      "profile_image": "/images/employees/female/emp-female (4).jpg",
+      "date_of_birth": "1989-11-22",
+      "date_of_joining": "2017-09-30",
+      "department_id": "DEP002",
+      "department_image": "/images/departments/pediatric.jpg",
+      "specialization": "Pediatric Dentistry",
+      "years_of_experience": 7,
+      "background_info": "Expert in child dental care and behavior management.",
+      "contact_info": {
+        "phone": "+1-202-555-0198",
+        "email": "sarah.alvarez@apolloniadental.com",
+        "address": "789 Willow Street, Springfield, IL"
+      },
+      "license_number": "DNT-IL-2017894",
+      "trainings": [
+        {
+          "training_name": "Pediatric Oral Sedation Techniques",
+          "date": "2018-04-17",
+          "certificate_url": "https://example.com/certificates/sarah_sedation.pdf"
+        },
+        {
+          "training_name": "Advanced Behavior Management in Pediatric Dentistry",
+          "date": "2020-08-11",
+          "certificate_url": "https://example.com/certificates/sarah_behavior.pdf"
+        }
+      ],
+      "projects": [
+        {
+          "project_id": "PRJ005",
+          "project_name": "Child-Friendly Dental Clinic Initiative",
+          "status": "Completed"
+        }
+      ],
+      "patients_assigned": [
+        {
+          "patient_id": "PAT014",
+          "patient_name": "Mia Carter",
+          "patient_image": "/images/patients/female/patients-female (5).jpg",
+          "treatment_notes": "Fluoride treatment completed; review in 6 months"
+        },
+        {
+          "patient_id": "PAT016",
+          "patient_name": "Lucas Wright",
+          "patient_image": "/images/patients/male/patients-male (5).jpg",
+          "treatment_notes": "Orthodontic evaluation scheduled for next visit"
+        }
+      ],
+      "revenue": { "per_patient": 300, "total": 600 },
+      "documents": [
+        { "type": "ID Proof", "url": "https://example.com/docs/sarah_id.pdf" },
+        {
+          "type": "Employment Contract",
+          "url": "https://example.com/docs/sarah_contract.pdf"
+        }
+      ]
+    },
+    {
+      "employee_id": "EMP006",
+      "first_name": "Constance",
+      "last_name": "Smith",
+      "profile_image": "/images/employees/female/emp-female (6).jpg",
+      "date_of_birth": "1985-03-22",
+      "date_of_joining": "2016-06-18",
+      "department_id": "DEP004",
+      "department_image": "/images/departments/oralSurgery.webp",
+      "specialization": "Surgery",
+      "years_of_experience": 8,
+      "background_info": "Highly experienced oral surgeon specializing in complex cases.",
+      "contact_info": {
+        "phone": "+1-202-555-0175",
+        "email": "constance.smith@apolloniadental.com",
+        "address": "890 Elm Street, Springfield, IL"
+      },
+      "license_number": "DNT-IL-2016345",
+      "trainings": [
+        {
+          "training_name": "Advanced Oral Surgery",
+          "date": "2019-04-10",
+          "certificate_url": "https://example.com/certificates/constance_oralsurgery.pdf"
+        },
+        {
+          "training_name": "Maxillofacial Trauma Management",
+          "date": "2021-08-22",
+          "certificate_url": "https://example.com/certificates/constance_maxillofacial.pdf"
+        }
+      ],
+      "projects": [
+        {
+          "project_id": "PRJ006",
+          "project_name": "Complex Jaw Reconstruction Study",
+          "status": "Ongoing"
+        }
+      ],
+      "patients_assigned": [
+        {
+          "patient_id": "PAT020",
+          "patient_name": "Michael Turner",
+          "patient_image": "/images/patients/male/patients-male (6).jpg",
+          "treatment_notes": "Post-operative recovery from jaw reconstruction"
+        },
+        {
+          "patient_id": "PAT021",
+          "patient_name": "Sophia Williams",
+          "patient_image": "/images/patients/female/patients-female (6).jpg",
+          "treatment_notes": "Wisdom tooth extraction - completed successfully"
+        }
+      ],
+      "revenue": { "per_patient": 1200, "total": 2400 },
+      "documents": [
+        {
+          "type": "ID Proof",
+          "url": "https://example.com/docs/constance_id.pdf"
+        },
+        {
+          "type": "Employment Contract",
+          "url": "https://example.com/docs/constance_contract.pdf"
+        }
+      ]
+    },
+    {
+      "employee_id": "EMP007",
+      "first_name": "Travis",
+      "last_name": "Combs",
+      "profile_image": "/images/employees/male/emp-male (7).jpg",
+      "date_of_birth": "1999-07-15",
+      "date_of_joining": "2023-10-01",
+      "department_id": "DEP002",
+      "department_image": "/images/departments/orthodontics.webp",
+      "specialization": "Pediatric Dentistry",
+      "years_of_experience": 0,
+      "background_info": "Recently joined as a trainee. Assigned to shadow multiple departments.",
+      "contact_info": {
+        "phone": "+1-202-555-0189",
+        "email": "travis.combs@apolloniadental.com",
+        "address": "567 Cedar Avenue, Springfield, IL"
+      },
+      "license_number": null,
+      "trainings": [
+        {
+          "training_name": "Pediatric Dentistry Orientation",
+          "date": "2023-11-10",
+          "certificate_url": "https://example.com/certificates/travis_orientation.pdf"
+        }
+      ],
+      "projects": [
+        {
+          "project_id": "PRJ007",
+          "project_name": "Trainee Rotational Program",
+          "status": "Ongoing"
+        }
+      ],
+      "patients_assigned": [
+        {
+          "patient_id": "PAT022",
+          "patient_name": "Emma Davis",
+          "patient_image": "/images/patients/female/patients-female (7).jpg",
+          "treatment_notes": "Routine pediatric check-up - supervised"
+        }
+      ],
+      "revenue": { "per_patient": 0, "total": 0 },
+      "documents": [
+        { "type": "ID Proof", "url": "https://example.com/docs/travis_id.pdf" },
+        {
+          "type": "Employment Contract",
+          "url": "https://example.com/docs/travis_contract.pdf"
+        }
+      ]
+    },
+    {
+      "employee_id": "EMP008",
+      "first_name": "Francisco",
+      "last_name": "Willard",
+      "profile_image": "/images/employees/male/emp-male (8).jpg",
+      "date_of_birth": "1995-03-12",
+      "date_of_joining": "2021-08-10",
+      "department_id": "DEP002",
+      "department_image": "/images/departments/pediatric.jpg",
+      "specialization": "Pediatric Dentistry",
+      "years_of_experience": 3,
+      "background_info": "Specializes in pediatric orthodontics and preventive care.",
+      "contact_info": {
+        "phone": "+1-202-555-0198",
+        "email": "francisco.willard@apolloniadental.com",
+        "address": "789 Oak Lane, Springfield, IL"
+      },
+      "license_number": "LIC-ORTHO-4521",
+      "trainings": [
+        {
+          "training_name": "Pediatric Orthodontics Certification",
+          "date": "2022-02-14",
+          "certificate_url": "https://example.com/certificates/francisco_orthodontics.pdf"
+        },
+        {
+          "training_name": "Preventive Dental Care Workshop",
+          "date": "2023-05-09",
+          "certificate_url": "https://example.com/certificates/francisco_preventive.pdf"
+        }
+      ],
+      "projects": [
+        {
+          "project_id": "PRJ011",
+          "project_name": "Children’s Dental Awareness Program",
+          "status": "Completed"
+        }
+      ],
+      "patients_assigned": [
+        {
+          "patient_id": "PAT033",
+          "patient_name": "Lucas Martin",
+          "patient_image": "/images/patients/male/patients-male (8).jpg",
+          "treatment_notes": "Orthodontic braces adjustment - scheduled follow-up in 6 weeks"
+        },
+        {
+          "patient_id": "PAT034",
+          "patient_name": "Isabella Brown",
+          "patient_image": "/images/patients/female/patients-female (8).jpg",
+          "treatment_notes": "Preventive cleaning and fluoride treatment"
+        }
+      ],
+      "revenue": { "per_patient": 220, "total": 440 },
+      "documents": [
+        {
+          "type": "ID Proof",
+          "url": "https://example.com/docs/francisco_id.pdf"
+        },
+        {
+          "type": "Employment Contract",
+          "url": "https://example.com/docs/francisco_contract.pdf"
+        }
+      ]
+    },
+    {
+      "employee_id": "EMP009",
+      "first_name": "Janet",
+      "last_name": "Doe",
+      "profile_image": "/images/employees/female/emp-female (9).jpg",
+      "date_of_birth": "1997-07-19",
+      "date_of_joining": "2022-03-05",
+      "department_id": "DEP001",
+      "department_image": "/images/departments/generalDentistry.jpg",
+      "specialization": "General Dentistry",
+      "years_of_experience": 2,
+      "background_info": "Focuses on patient communication and preventive care.",
+      "contact_info": {
+        "phone": "+1-202-555-0169",
+        "email": "janet.doe@apolloniadental.com",
+        "address": "102 Willow Street, Springfield, IL"
+      },
+      "license_number": "LIC-GENDEN-3298",
+      "trainings": [
+        {
+          "training_name": "Preventive Dental Care Certification",
+          "date": "2022-08-12",
+          "certificate_url": "https://example.com/certificates/janet_preventive.pdf"
+        },
+        {
+          "training_name": "Effective Patient Communication Workshop",
+          "date": "2023-04-15",
+          "certificate_url": "https://example.com/certificates/janet_communication.pdf"
+        }
+      ],
+      "projects": [
+        {
+          "project_id": "PRJ015",
+          "project_name": "Community Dental Awareness Drive",
+          "status": "Ongoing"
+        }
+      ],
+      "patients_assigned": [
+        {
+          "patient_id": "PAT041",
+          "patient_name": "James Peterson",
+          "patient_image": "/images/patients/male/patients-male (9).jpg",
+          "treatment_notes": "Routine dental cleaning and oral hygiene counseling"
+        },
+        {
+          "patient_id": "PAT042",
+          "patient_name": "Sophia Lee",
+          "patient_image": "/images/patients/female/patients-female (9).jpg",
+          "treatment_notes": "Follow-up for cavity filling"
+        }
+      ],
+      "revenue": { "per_patient": 150, "total": 300 },
+      "documents": [
+        { "type": "ID Proof", "url": "https://example.com/docs/janet_id.pdf" },
+        {
+          "type": "Employment Contract",
+          "url": "https://example.com/docs/janet_contract.pdf"
+        }
+      ]
+    },
+    {
+      "employee_id": "EMP010",
+      "first_name": "Leslie",
+      "last_name": "Roche",
+      "profile_image": "/images/employees/female/emp-female (10).jpg",
+      "date_of_birth": "1986-04-27",
+      "date_of_joining": "2015-12-20",
+      "department_id": "DEP005",
+      "department_image": "/images/departments/orthodontics.webp",
+      "specialization": "Orthodontics",
+      "years_of_experience": 9,
+      "background_info": "Senior orthodontist with expertise in braces and aligners.",
+      "contact_info": {
+        "phone": "+1-202-555-0175",
+        "email": "leslie.roche@apolloniadental.com",
+        "address": "320 Aspen Avenue, Denver, CO"
+      },
+      "license_number": "LIC-ORTHO-7721",
+      "trainings": [
+        {
+          "training_name": "Advanced Orthodontics Certification",
+          "date": "2016-09-10",
+          "certificate_url": "https://example.com/certificates/leslie_advanced_ortho.pdf"
+        },
+        {
+          "training_name": "Clear Aligner Masterclass",
+          "date": "2019-05-18",
+          "certificate_url": "https://example.com/certificates/leslie_clear_aligner.pdf"
+        }
+      ],
+      "projects": [
+        {
+          "project_id": "PRJ022",
+          "project_name": "School Dental Screening Initiative",
+          "status": "Completed"
+        },
+        {
+          "project_id": "PRJ023",
+          "project_name": "Invisible Braces Research Study",
+          "status": "Ongoing"
+        }
+      ],
+      "patients_assigned": [
+        {
+          "patient_id": "PAT051",
+          "patient_name": "Olivia Harris",
+          "patient_image": "/images/patients/female/patients-female (10).jpg",
+          "treatment_notes": "Started clear aligner treatment in Jan 2024"
+        },
+        {
+          "patient_id": "PAT052",
+          "patient_name": "William Parker",
+          "patient_image": "/images/patients/male/patients-male (10).jpg",
+          "treatment_notes": "Monthly braces adjustment and progress monitoring"
+        }
+      ],
+      "revenue": { "per_patient": 800, "total": 1600 },
+      "documents": [
+        { "type": "ID Proof", "url": "https://example.com/docs/leslie_id.pdf" },
+        {
+          "type": "Employment Contract",
+          "url": "https://example.com/docs/leslie_contract.pdf"
+        }
+      ]
+    }
+  ]
+}
