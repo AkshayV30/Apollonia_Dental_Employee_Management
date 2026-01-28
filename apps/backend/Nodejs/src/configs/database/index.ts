@@ -1,15 +1,8 @@
 import { CONFIG } from "../env";
 import { connectMongo } from "./mongo";
-import { loadLocalJson } from "./local";
 
 export async function initializeDatabase() {
   switch (CONFIG.DB_MODE) {
-    case "local-json":
-      return {
-        mode: "local-json",
-        employees: loadLocalJson("sampleData.json"),
-      };
-
     case "local-mongo":
     case "cloud-atlas-mongo":
       await connectMongo();
