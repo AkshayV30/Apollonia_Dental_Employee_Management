@@ -27,9 +27,7 @@ export const CONFIG = {
    * Database
    * ---------------------------------- */
   DB_MODE: process.env.DATABASE_MODE,
-
-  MONGO_LOCAL: process.env.MONGO_URI_LOCAL,
-  MONGO_ATLAS: process.env.MONGO_URI_ATLAS,
+  DATABASE_URL: required("DATABASE_URL", process.env.DATABASE_URL),
 
   /* ----------------------------------
    * Security

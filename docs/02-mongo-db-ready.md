@@ -1,10 +1,3 @@
-Here is a **clean, professional, portfolio-ready `README.md`** you can place alongside your Mongo connection code
-(e.g. `docs/mongo-connection.md` or `backend/README.md` section).
-
-This is written to **explain design decisions without leaking implementation secrets**, exactly what reviewers expect.
-
----
-
 # MongoDB Connection & Readiness Handling
 
 ## Overview

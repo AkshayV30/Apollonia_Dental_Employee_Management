@@ -28,3 +28,4 @@ Thumbs.db
 .env
 
 /src/seed/*.json
+/src/generated/prisma

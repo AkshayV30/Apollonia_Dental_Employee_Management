@@ -1,0 +1,88 @@
+.
+├── apps
+│   ├── backend
+│   │   └── Nodejs
+│   │       ├── package.json
+│   │       ├── package-lock.json
+│   │       ├── Readme.md
+│   │       ├── src
+│   │       │   ├── app.ts
+│   │       │   ├── configs
+│   │       │   │   ├── auth
+│   │       │   │   │   ├── auth.controller.ts
+│   │       │   │   │   └── auth.routes.ts
+│   │       │   │   ├── database
+│   │       │   │   │   ├── index.ts
+│   │       │   │   │   └── mongo.ts
+│   │       │   │   └── env.ts
+│   │       │   ├── middlewares
+│   │       │   │   ├── auth.middleware.ts
+│   │       │   │   ├── cors.middleware.ts
+│   │       │   │   ├── errorHandler.middleware.ts
+│   │       │   │   └── notFound.middleware.ts
+│   │       │   ├── modules
+│   │       │   │   ├── assignments
+│   │       │   │   ├── departments
+│   │       │   │   │   ├── departments.controller.ts
+│   │       │   │   │   ├── departments.model.ts
+│   │       │   │   │   └── departments.routes.ts
+│   │       │   │   ├── employees
+│   │       │   │   │   ├── employee.controller.ts
+│   │       │   │   │   ├── employee.model.ts
+│   │       │   │   │   └── employee.routes.ts
+│   │       │   │   ├── patients
+│   │       │   │   │   ├── patient.controller.ts
+│   │       │   │   │   ├── patient.model.ts
+│   │       │   │   │   └── patient.routes.ts
+│   │       │   │   ├── revenue
+│   │       │   │   ├── specialization
+│   │       │   │   └── trainings
+│   │       │   ├── routes.ts
+│   │       │   ├── seed
+│   │       │   │   ├── departments.json
+│   │       │   │   ├── employees.json
+│   │       │   │   ├── initialData.json
+│   │       │   │   └── seed.ts
+│   │       │   ├── server.ts
+│   │       │   └── utils
+│   │       │       ├── crud.controller.ts
+│   │       │       └── logger.ts
+│   │       └── tsconfig.json
+│   └── frontend
+│       └── AngularApp
+│           ├── angular.json
+│           ├── package.json
+│           ├── package-lock.json
+│           ├── public
+│           │   └── favicon.ico
+│           ├── README.md
+│           ├── src
+│           │   ├── app
+│           │   │   ├── app.config.ts
+│           │   │   ├── app.html
+│           │   │   ├── app.routes.ts
+│           │   │   ├── app.scss
+│           │   │   ├── app.spec.ts
+│           │   │   └── app.ts
+│           │   ├── index.html
+│           │   ├── main.ts
+│           │   └── styles.scss
+│           ├── tsconfig.app.json
+│           ├── tsconfig.json
+│           └── tsconfig.spec.json
+├── docs
+│   ├── 00-overview.md
+│   ├── 01-architecture.md
+│   └── 02-mongo-db-ready.md
+├── infra
+│   ├── aws
+│   ├── gcp
+│   ├── modules
+│   └── Readme.md
+├── platform
+│   ├── docker
+│   └── k8s
+├── Readme.md
+└── t.txt
+
+32 directories, 54 files
