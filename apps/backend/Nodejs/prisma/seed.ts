@@ -1,8 +1,9 @@
 import fs from "fs";
 import path from "path";
+
 import { PrismaPg } from "@prisma/adapter-pg";
-import { PrismaClient } from "../src/generated/prisma/client";
-import { CONFIG } from "../src/configs/env";
+import { PrismaClient } from "../src/generated/prisma/client.js";
+import { CONFIG } from "../src/configs/env.js";
 
 const adapter = new PrismaPg({
   connectionString: CONFIG.DATABASE_URL,

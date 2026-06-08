@@ -1,4 +1,4 @@
-import { prisma } from "../configs/database/prisma";
+import { prisma } from "../configs/database/prisma.js";
 
 export async function generateEmployeeCode(tenantId: string) {
   const count = await prisma.employee.count({

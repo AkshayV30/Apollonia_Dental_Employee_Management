@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from "express";
 
-import { prisma } from "../../configs/database/prisma";
-import { getOrCreateTenant } from "../../utils/tenant";
-import { generateEmployeeCode } from "../../utils/codes";
+import { prisma } from "../../configs/database/prisma.js";
+import { getOrCreateTenant } from "../../utils/tenant.js";
+import { generateEmployeeCode } from "../../utils/codes.js";
 
 export async function getEmployees(
   req: Request,

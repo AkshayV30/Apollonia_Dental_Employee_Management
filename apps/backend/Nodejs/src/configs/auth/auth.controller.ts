@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import jwt from "jsonwebtoken";
-import { CONFIG } from "../env";
+import { CONFIG } from "../env.js";
 
 export const signup = async (_req: Request, res: Response) => {
   res.json({

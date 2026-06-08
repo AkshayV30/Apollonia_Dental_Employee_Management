@@ -1,11 +1,12 @@
 import express from "express";
 import morgan from "morgan";
 
-import router from "./routes";
-import { corsMiddleware } from "./middlewares/cors.middleware";
-import { tenantMiddleware } from "./middlewares/tenant.middleware";
-import { errorHandler } from "./middlewares/errorHandler.middleware";
-import { notFoundHandler } from "./middlewares/notFound.middleware";
+import router from "./routes.js";
+
+import { corsMiddleware } from "./middlewares/cors.middleware.js";
+import { tenantMiddleware } from "./middlewares/tenant.middleware.js";
+import { errorHandler } from "./middlewares/errorHandler.middleware.js";
+import { notFoundHandler } from "./middlewares/notFound.middleware.js";
 
 export function createExpressServer(_db: any) {
   const app = express();
@@ -19,6 +20,7 @@ export function createExpressServer(_db: any) {
       message: "Apollonia Employee Management API running",
       database: "PostgreSQL",
       orm: "Prisma",
+      module: "esm",
     });
   });
 
@@ -27,6 +29,7 @@ export function createExpressServer(_db: any) {
       status: "ok",
       database: "postgres",
       orm: "prisma",
+      module: "esm",
       timestamp: new Date().toISOString(),
     });
   });

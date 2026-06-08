@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 
-import { prisma } from "../../configs/database/prisma";
-import { getOrCreateTenant } from "../../utils/tenant";
+import { prisma } from "../../configs/database/prisma.js";
+import { getOrCreateTenant } from "../../utils/tenant.js";
 
 export async function getAssignments(
   req: Request,

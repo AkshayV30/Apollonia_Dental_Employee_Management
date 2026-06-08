@@ -1,10 +1,10 @@
 import { Router } from "express";
 
-import employeeRoutes from "./modules/employees/employee.routes";
-import departmentRoutes from "./modules/departments/departments.routes";
-import assignmentRoutes from "./modules/assignments/assignments.routes";
-import patientRoutes from "./modules/patients/patient.routes";
-import authRoutes from "./configs/auth/auth.routes";
+import employeeRoutes from "./modules/employees/employee.routes.js";
+import departmentRoutes from "./modules/departments/departments.routes.js";
+import assignmentRoutes from "./modules/assignments/assignments.routes.js";
+import patientRoutes from "./modules/patients/patient.routes.js";
+import authRoutes from "./configs/auth/auth.routes.js";
 
 const router = Router();
 

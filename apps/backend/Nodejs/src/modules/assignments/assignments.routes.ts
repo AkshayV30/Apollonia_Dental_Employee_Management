@@ -5,7 +5,7 @@ import {
   createAssignment,
   deleteAssignment,
   getDepartmentWiseEmployees,
-} from "./assignments.controller";
+} from "./assignments.controller.js";
 
 const router = Router();
 

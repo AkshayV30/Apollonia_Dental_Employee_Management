@@ -1,7 +1,8 @@
 import chalk from "chalk";
-import { CONFIG } from "./configs/env";
-import { createExpressServer } from "./app";
-import { initializeDatabase } from "./configs/database";
+
+import { CONFIG } from "./configs/env.js";
+import { createExpressServer } from "./app.js";
+import { initializeDatabase } from "./configs/database/index.js";
 
 const SERVER_URL =
   CONFIG.PUBLIC_URL ?? `${CONFIG.PROTOCOL}://${CONFIG.HOST}:${CONFIG.PORT}`;

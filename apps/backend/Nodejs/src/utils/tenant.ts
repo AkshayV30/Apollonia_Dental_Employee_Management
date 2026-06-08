@@ -1,5 +1,5 @@
 import { Request } from "express";
-import { prisma } from "../configs/database/prisma";
+import { prisma } from "../configs/database/prisma.js";
 
 export async function getOrCreateTenant(req: Request) {
   const tenantSlug = (req as any).tenantSlug || "apollonia";

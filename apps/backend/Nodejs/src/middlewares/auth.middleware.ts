@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 import { StatusCodes } from "http-status-codes";
 import { Request, Response, NextFunction } from "express";
-import { CONFIG } from "../configs/env";
+import { CONFIG } from "../configs/env.js";
 
 const auth = (req: Request, res: Response, next: NextFunction) => {
   const header = req.headers.authorization;

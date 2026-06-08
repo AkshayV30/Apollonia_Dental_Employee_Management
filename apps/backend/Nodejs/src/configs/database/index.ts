@@ -1,5 +1,5 @@
-import { CONFIG } from "../env";
-import { connectPostgres } from "./prisma";
+import { CONFIG } from "../env.js";
+import { connectPostgres } from "./prisma.js";
 
 export async function initializeDatabase() {
   switch (CONFIG.DB_MODE) {
