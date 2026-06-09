@@ -1,0 +1,26 @@
+<header class="hero">
+  <div>
+    <p class="eyebrow">Apollonia Dental Practice</p>
+    <h1>Employee Management System</h1>
+    <p>SaaS-ready clinic management dashboard connected to the PostgreSQL + Prisma backend.</p>
+  </div>
+
+  <section class="stats">
+    <article>
+      <strong>{{ employeeCount() }}</strong>
+      <span>Employees</span>
+    </article>
+
+    <article>
+      <strong>{{ departmentCount() }}</strong>
+      <span>Departments</span>
+    </article>
+
+    <article>
+      <strong>{{ patientCount() }}</strong>
+      <span>Patients</span>
+    </article>
+
+    <button type="button" (click)="logoutClicked.emit()">Logout</button>
+  </section>
+</header>

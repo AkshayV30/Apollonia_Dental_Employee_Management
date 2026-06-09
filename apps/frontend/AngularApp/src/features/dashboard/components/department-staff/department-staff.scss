@@ -1,0 +1,55 @@
+@use '../../../../shared/styles/cards';
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+
+  h2 {
+    margin: 0 0 18px;
+  }
+}
+
+.loading {
+  color: #0f766e;
+  font-weight: 800;
+}
+
+.departments {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.department-card {
+  padding: 18px;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  background: #f8fafc;
+
+  h3 {
+    margin: 0;
+    color: #0f172a;
+  }
+
+  p {
+    margin: 6px 0 14px;
+    color: #64748b;
+    font-weight: 800;
+  }
+
+  ul {
+    display: grid;
+    gap: 10px;
+    padding-left: 18px;
+    margin-bottom: 0;
+  }
+
+  li span {
+    display: block;
+    margin-top: 2px;
+    color: #64748b;
+    font-size: 0.9rem;
+  }
+}

@@ -1,0 +1,52 @@
+<form class="card form-card" [formGroup]="employeeForm" (ngSubmit)="submit()">
+  <h2>Add Employee</h2>
+
+  <label>
+    First Name
+    <input type="text" formControlName="first_name" placeholder="Lisa" />
+  </label>
+
+  <label>
+    Last Name
+    <input type="text" formControlName="last_name" placeholder="Harris" />
+  </label>
+
+  <label>
+    Department
+    <select formControlName="department_id">
+      <option value="">No department yet</option>
+
+      @for (department of departments(); track department.department_id) {
+        <option [value]="department.department_id">
+          {{ department.name }}
+        </option>
+      }
+    </select>
+  </label>
+
+  <label>
+    Date of Joining
+    <input type="date" formControlName="date_of_joining" />
+  </label>
+
+  <label>
+    Specialization
+    <input type="text" formControlName="specialization" placeholder="General Dentistry" />
+  </label>
+
+  <label>
+    Years of Experience
+    <input type="number" formControlName="years_of_experience" />
+  </label>
+
+  <label>
+    Background Info
+    <textarea
+      rows="3"
+      formControlName="background_info"
+      placeholder="Short professional background"
+    ></textarea>
+  </label>
+
+  <button type="submit">Create Employee</button>
+</form>

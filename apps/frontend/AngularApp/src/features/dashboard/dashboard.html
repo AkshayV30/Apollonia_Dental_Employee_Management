@@ -1,0 +1,41 @@
+<main class="page">
+  <app-dashboard-hero
+    [employeeCount]="employeeCount()"
+    [departmentCount]="departmentCount()"
+    [patientCount]="patientCount()"
+    (logoutClicked)="logout()"
+  />
+
+  @if (error()) {
+    <section class="alert">
+      {{ error() }}
+    </section>
+  }
+
+  <section class="grid grid-3">
+    <app-department-form (departmentCreated)="createDepartment($event)" />
+
+    <app-employee-form [departments]="departments()" (employeeCreated)="createEmployee($event)" />
+
+    <app-patient-form (patientCreated)="createPatient($event)" />
+  </section>
+
+  <section class="grid grid-2">
+    <app-assignment-manager
+      [employees]="employees()"
+      [departments]="departments()"
+      [assignments]="assignments()"
+      (assignmentCreated)="createAssignment($event)"
+      (assignmentRemoved)="removeAssignment($event)"
+    />
+  </section>
+
+  <app-department-staff
+    [loading]="loading()"
+    [departmentWiseEmployees]="departmentWiseEmployees()"
+  />
+
+  <app-employee-table [employees]="employees()" />
+
+  <app-patient-table [patients]="patients()" />
+</main>

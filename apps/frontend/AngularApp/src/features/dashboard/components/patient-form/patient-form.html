@@ -1,0 +1,20 @@
+<form class="card form-card" [formGroup]="patientForm" (ngSubmit)="submit()">
+  <h2>Add Patient</h2>
+
+  <label>
+    Patient Name
+    <input type="text" formControlName="patient_name" placeholder="Patient name" />
+  </label>
+
+  <label>
+    Patient Image URL
+    <input type="text" formControlName="patient_image" placeholder="Optional image URL" />
+  </label>
+
+  <label>
+    Treatment Notes
+    <textarea rows="4" formControlName="treatment_notes" placeholder="Treatment notes"></textarea>
+  </label>
+
+  <button type="submit">Create Patient</button>
+</form>

@@ -1,0 +1,12 @@
+@use '../../../../shared/styles/cards';
+@use '../../../../shared/styles/forms';
+
+button {
+  border: none;
+  border-radius: 13px;
+  padding: 13px 18px;
+  background: #0f766e;
+  color: #ffffff;
+  font-weight: 900;
+  cursor: pointer;
+}

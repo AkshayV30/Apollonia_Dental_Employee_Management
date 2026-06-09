@@ -1,0 +1,58 @@
+<form class="card form-card" [formGroup]="assignmentForm" (ngSubmit)="submit()">
+  <h2>Assign Employee to Department</h2>
+
+  <label>
+    Employee
+    <select formControlName="employee_id">
+      <option value="">Select employee</option>
+
+      @for (employee of employees(); track employee.employee_id) {
+        <option [value]="employee.employee_id">
+          {{ employee.employee_id }} — {{ employee.first_name }} {{ employee.last_name }}
+        </option>
+      }
+    </select>
+  </label>
+
+  <label>
+    Department
+    <select formControlName="department_id">
+      <option value="">Select department</option>
+
+      @for (department of departments(); track department.department_id) {
+        <option [value]="department.department_id">
+          {{ department.department_id }} — {{ department.name }}
+        </option>
+      }
+    </select>
+  </label>
+
+  <button type="submit">Assign</button>
+</form>
+
+<section class="card">
+  <h2>Current Assignments</h2>
+
+  @if (assignments().length === 0) {
+    <p class="empty">No assignments found.</p>
+  } @else {
+    <div class="assignment-list">
+      @for (assignment of assignments(); track assignment.employee_id + assignment.department_id) {
+        <article class="assignment-item">
+          <div>
+            <strong>{{ assignment.employee_name }}</strong>
+            <span>{{ assignment.department_name }}</span>
+          </div>
+
+          <button
+            type="button"
+            class="danger"
+            (click)="remove(assignment.employee_id, assignment.department_id)"
+          >
+            Remove
+          </button>
+        </article>
+      }
+    </div>
+  }
+</section>

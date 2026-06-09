@@ -1,0 +1,38 @@
+<main class="auth-page">
+  <section class="auth-card">
+    <div class="brand">
+      <span>ADP</span>
+      <div>
+        <p>Apollonia Dental Practice</p>
+        <h1>Employee Management</h1>
+      </div>
+    </div>
+
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <h2>Sign in</h2>
+      <p class="hint">
+        Demo login connects to your backend auth endpoint and stores the JWT token.
+      </p>
+
+      @if (error()) {
+        <div class="alert">
+          {{ error() }}
+        </div>
+      }
+
+      <label>
+        Email
+        <input type="email" formControlName="email" />
+      </label>
+
+      <label>
+        Password
+        <input type="password" formControlName="password" />
+      </label>
+
+      <button type="submit" [disabled]="loading()">
+        {{ loading() ? 'Signing in...' : 'Sign in' }}
+      </button>
+    </form>
+  </section>
+</main>

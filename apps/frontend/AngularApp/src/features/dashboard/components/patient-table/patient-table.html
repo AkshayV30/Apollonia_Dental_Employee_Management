@@ -1,0 +1,25 @@
+<section class="card">
+  <h2>Patients</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Patient ID</th>
+          <th>Name</th>
+          <th>Treatment Notes</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        @for (patient of patients(); track patient.patient_id) {
+          <tr>
+            <td>{{ patient.patient_id }}</td>
+            <td>{{ patient.patient_name }}</td>
+            <td>{{ patient.treatment_notes || '-' }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</section>

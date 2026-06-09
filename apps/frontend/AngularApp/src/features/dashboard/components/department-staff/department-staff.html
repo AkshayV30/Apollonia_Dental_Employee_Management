@@ -1,0 +1,34 @@
+<section class="card">
+  <div class="section-header">
+    <h2>Department-wise Staff</h2>
+
+    @if (loading()) {
+      <span class="loading">Loading...</span>
+    }
+  </div>
+
+  <div class="departments">
+    @for (department of departmentWiseEmployees(); track department.department_id) {
+      <article class="department-card">
+        <h3>{{ department.name }}</h3>
+        <p>{{ department.department_id }}</p>
+
+        @if (department.employees.length === 0) {
+          <span class="empty">No employees assigned.</span>
+        } @else {
+          <ul>
+            @for (employee of department.employees; track employee.employee_id) {
+              <li>
+                <strong>{{ employee.first_name }} {{ employee.last_name }}</strong>
+
+                @if (employee.specialization) {
+                  <span>{{ employee.specialization }}</span>
+                }
+              </li>
+            }
+          </ul>
+        }
+      </article>
+    }
+  </div>
+</section>

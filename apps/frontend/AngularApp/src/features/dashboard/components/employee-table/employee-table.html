@@ -1,0 +1,37 @@
+<section class="card">
+  <h2>All Employees</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Employee ID</th>
+          <th>Name</th>
+          <th>Specialization</th>
+          <th>Experience</th>
+          <th>Departments</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        @for (employee of employees(); track employee.employee_id) {
+          <tr>
+            <td>{{ employee.employee_id }}</td>
+            <td>{{ employee.first_name }} {{ employee.last_name }}</td>
+            <td>{{ employee.specialization || '-' }}</td>
+            <td>{{ employee.years_of_experience || 0 }} years</td>
+            <td>
+              @if ((employee.departments || []).length === 0) {
+                <span class="muted">Not assigned</span>
+              } @else {
+                @for (department of employee.departments || []; track department.department_id) {
+                  <span class="pill">{{ department.name }}</span>
+                }
+              }
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</section>

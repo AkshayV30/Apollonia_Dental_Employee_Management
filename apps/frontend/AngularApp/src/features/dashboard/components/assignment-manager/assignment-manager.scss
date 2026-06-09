@@ -1,0 +1,57 @@
+@use '../../../../shared/styles/cards';
+@use '../../../../shared/styles/forms';
+
+:host {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+button {
+  border: none;
+  border-radius: 13px;
+  padding: 13px 18px;
+  background: #0f766e;
+  color: #ffffff;
+  font-weight: 900;
+  cursor: pointer;
+
+  &.danger {
+    background: #dc2626;
+    padding: 9px 12px;
+    font-size: 0.82rem;
+  }
+}
+
+.assignment-list {
+  display: grid;
+  gap: 10px;
+}
+
+.assignment-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  background: #f8fafc;
+
+  strong {
+    display: block;
+  }
+
+  span {
+    display: block;
+    margin-top: 2px;
+    color: #64748b;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 1100px) {
+  :host {
+    grid-template-columns: 1fr;
+  }
+}

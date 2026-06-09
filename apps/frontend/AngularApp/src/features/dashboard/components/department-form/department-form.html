@@ -1,0 +1,10 @@
+<form class="card form-card" [formGroup]="departmentForm" (ngSubmit)="submit()">
+  <h2>Add Department</h2>
+
+  <label>
+    Department Name
+    <input type="text" formControlName="name" placeholder="Implant Dentistry" />
+  </label>
+
+  <button type="submit">Create Department</button>
+</form>
