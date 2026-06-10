@@ -2,100 +2,201 @@
 
 ## Overview
 
-This repository contains a **foundational full-stack employee management application** developed as part of a **professional learning project aligned with Coursera full-stack and backend engineering outcomes**.
+Apollonia Dental Practice – Employee Management System is a full-stack web application designed to help a dental clinic manage its employees, departments, patient records, and internal staff assignments in a more organized and secure way.
 
-The system is designed to help a medical practice **digitize employee and department records**, enforce **secure access controls**, and provide a **scalable base** for future workforce and customer relationship management capabilities.
-
----
-
-## Project Context (Business Use Case)
-
-Apollonia Dental Practice is transitioning from manual processes to a **digital employee management platform**.
-
-The organization requires:
-
-- Centralized employee records
-- Department-wise staff organization
-- Secure access based on user roles
-- A system that can grow into a full **Employee & Customer Relationship Management (E-CRM)** solution
-
-This project represents the **first implementation phase** of that long-term vision.
+The project was built as a professional learning and portfolio project. It demonstrates how a manual clinic workflow can be converted into a digital system that is easier to manage, easier to extend, and ready for future Employee & Customer Relationship Management features.
 
 ---
 
-## Core Capabilities
+## Project Context
 
-At its current stage, the application supports:
+Apollonia Dental Practice is moving from manual staff and department tracking to a digital employee management platform.
 
+The clinic needs a system that can:
+
+- Maintain employee records in one place
+- Organize employees by department
+- Manage staff assignment across departments
+- Secure access through login and roles
+- Support future patient, revenue, and reporting features
+
+This project represents the first major step toward a future clinic management and E-CRM platform.
+
+---
+
+## Current Features
+
+The application currently supports:
+
+- User signup and login
+- Secure dashboard access
+- Admin and staff user roles
 - Employee record management
 - Department management
-- Secure authentication
-- Role-based access control (RBAC)
-- CRUD operations through RESTful APIs
-- Web-based user interaction
+- Employee-to-department assignment
+- Department-wise staff view
+- Patient record management
+- Web-based dashboard interface
 
 ---
 
-## Security & Access Control
+## Application Screens and Workflows
 
-The system follows **industry-standard security principles**:
+The system includes a simple dashboard where users can:
 
-- **Authentication**
-  - Secure login mechanism
-  - Token-based session handling
-
-- **Authorization (RBAC)**
-  - Role-based access control
-  - Separation of privileges between administrative and standard users
-  - Controlled access to sensitive operations
-
-> RBAC logic is implemented at both **API and service layers**.
-
----
-
-## Functional Scope
-
-### Employee Management
-
-- Create and manage employee profiles
+- Add employees
+- Add departments
 - Assign employees to departments
-- Update and remove records based on authorization level
+- View staff department-wise
+- Add patient records
+- View employee and patient lists
+- Login and logout securely
 
-### Department Management
-
-- Maintain department listings
-- Associate employees with departments
-- Enable department-wise employee views
-
----
-
-## Technical Stack
-
-### Application Architecture
-
-- Client–Server architecture
-- RESTful API communication
-- Modular backend design
-
-### Technologies
-
-- Backend: Node.js, Express
-- Database: MongoDB
-- Frontend: Web UI
-- Security: Authentication + RBAC
-- DevOps: Docker, cloud-ready design
+The first registered user becomes an administrator. Additional users are treated as staff users.
 
 ---
 
-## Scalability & Future Roadmap
+## Technology Used
 
-The architecture is designed to support future expansion, including:
+This project uses a modern full-stack setup:
 
-- Training & specialization records
-- Project tracking
-- Patient management
-- Revenue analytics
-- Advanced reporting dashboards
-- Cloud-native deployment and monitoring
+- Angular for the frontend
+- Node.js and Express for the backend
+- PostgreSQL for the database
+- Prisma for database access
+- JWT for authentication
+- TypeScript across the application
+
+Detailed technical documentation is available inside the `docs/` folder.
 
 ---
+
+## Project Structure
+
+```text
+.
+├── apps
+│   ├── backend
+│   │   └── Nodejs
+│   └── frontend
+│       └── AngularApp
+├── docs
+├── infra
+├── platform
+└── README.md
+```
+
+---
+
+## Documentation
+
+More detailed documentation is available here:
+
+| File                                       | Description                         |
+| ------------------------------------------ | ----------------------------------- |
+| `docs/00-overview.md`                      | Project and business overview       |
+| `docs/01-architecture.md`                  | Application architecture            |
+| `docs/02-system-design.md`                 | System design and workflows         |
+| `docs/03-database-design.md`               | Database design                     |
+| `docs/04-auth-security.md`                 | Authentication and security         |
+| `docs/05-api-reference.md`                 | Backend API reference               |
+| `docs/06-setup-guide.md`                   | Local setup guide                   |
+| `docs/07-roadmap.md`                       | Future roadmap                      |
+| `docs/08-system-design-interview-notes.md` | Interview-style system design notes |
+
+---
+
+## Running the Project Locally
+
+### Backend
+
+```bash
+cd apps/backend/Nodejs
+npm install
+npx prisma generate
+npx prisma migrate dev
+npm run seed
+npm run dev
+```
+
+Backend runs at:
+
+```text
+http://localhost:5000
+```
+
+---
+
+### Frontend
+
+```bash
+cd apps/frontend/AngularApp
+npm install
+ng serve
+```
+
+Frontend runs at:
+
+```text
+http://localhost:4200
+```
+
+---
+
+## Demo Login Flow
+
+Open:
+
+```text
+http://localhost:4200/login
+```
+
+Use the signup tab first to create the first admin user:
+
+```text
+Name: Admin User
+Email: admin@apollonia.local
+Password: password123
+```
+
+After signup, the user is redirected to the dashboard.
+
+---
+
+## Current Status
+
+This project currently includes the main foundation for:
+
+- Employee management
+- Department management
+- Patient record management
+- Login and signup
+- Role-based access
+- PostgreSQL-backed data storage
+- Angular dashboard interface
+
+The system is ready to be extended into a larger clinic management or E-CRM platform.
+
+---
+
+## Future Improvements
+
+Planned improvements include:
+
+- User invitation system
+- Better admin user management
+- Password reset
+- Audit logs
+- Training and specialization records
+- Patient-to-employee assignments
+- Revenue tracking
+- Dashboard charts and reports
+- Docker-based deployment
+- Cloud deployment
+- CI/CD pipeline
+
+---
+
+## Disclaimer
+
+This project is created for educational and portfolio purposes. The clinic name, employee data, and business scenario are used for demonstration only.
