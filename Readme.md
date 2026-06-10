@@ -92,17 +92,14 @@ Detailed technical documentation is available inside the `docs/` folder.
 
 More detailed documentation is available here:
 
-| File                                       | Description                         |
-| ------------------------------------------ | ----------------------------------- |
-| `docs/00-overview.md`                      | Project and business overview       |
-| `docs/01-architecture.md`                  | Application architecture            |
-| `docs/02-system-design.md`                 | System design and workflows         |
-| `docs/03-database-design.md`               | Database design                     |
-| `docs/04-auth-security.md`                 | Authentication and security         |
-| `docs/05-api-reference.md`                 | Backend API reference               |
-| `docs/06-setup-guide.md`                   | Local setup guide                   |
-| `docs/07-roadmap.md`                       | Future roadmap                      |
-| `docs/08-system-design-interview-notes.md` | Interview-style system design notes |
+| File                         | Description                   |
+| ---------------------------- | ----------------------------- |
+| `docs/00-overview.md`        | Project and business overview |
+| `docs/01-architecture.md`    | Application architecture      |
+| `docs/02-system-design.md`   | System design and workflows   |
+| `docs/03-database-design.md` | Database design               |
+| `docs/04-auth-security.md`   | Authentication and security   |
+| `docs/05-api-reference.md`   | Backend API reference         |
 
 ---
 
