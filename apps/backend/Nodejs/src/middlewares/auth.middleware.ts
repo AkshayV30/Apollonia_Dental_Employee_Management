@@ -1,26 +1,29 @@
-import jwt from "jsonwebtoken";
 import { StatusCodes } from "http-status-codes";
 import { Request, Response, NextFunction } from "express";
-import { CONFIG } from "../configs/env.js";
+
+import { verifyAccessToken } from "../utils/token.js";
 
 const auth = (req: Request, res: Response, next: NextFunction) => {
   const header = req.headers.authorization;
 
   if (!header?.startsWith("Bearer ")) {
     return res.status(StatusCodes.UNAUTHORIZED).json({
-      msg: "No token provided",
+      error: "No token provided",
     });
   }
 
   const token = header.split(" ")[1];
 
   try {
-    const decoded = jwt.verify(token, CONFIG.JWT_SECRET);
+    const decoded = verifyAccessToken(token);
+
     (req as any).user = decoded;
+    (req as any).tenantSlug = decoded.tenantSlug;
+
     next();
   } catch {
-    res.status(StatusCodes.UNAUTHORIZED).json({
-      msg: "Invalid token",
+    return res.status(StatusCodes.UNAUTHORIZED).json({
+      error: "Invalid or expired token",
     });
   }
 };

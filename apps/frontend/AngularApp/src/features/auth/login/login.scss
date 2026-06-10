@@ -16,7 +16,7 @@
 }
 
 .auth-card {
-  width: min(100%, 460px);
+  width: min(100%, 480px);
   padding: 28px;
   border-radius: 28px;
   background: #ffffff;
@@ -28,7 +28,7 @@
   display: flex;
   gap: 14px;
   align-items: center;
-  margin-bottom: 28px;
+  margin-bottom: 22px;
 
   > span {
     display: grid;
@@ -54,6 +54,32 @@
     margin: 4px 0 0;
     color: #0f172a;
     font-size: 1.35rem;
+  }
+}
+
+.mode-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  padding: 6px;
+  margin-bottom: 24px;
+  border-radius: 16px;
+  background: #f1f5f9;
+
+  button {
+    border: 0;
+    border-radius: 12px;
+    padding: 11px 14px;
+    background: transparent;
+    color: #475569;
+    font-weight: 900;
+    cursor: pointer;
+
+    &.active {
+      background: #ffffff;
+      color: #0f766e;
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
+    }
   }
 }
 
@@ -94,7 +120,7 @@ input {
   }
 }
 
-button {
+form > button {
   margin-top: 8px;
   border: none;
   border-radius: 13px;
@@ -116,4 +142,11 @@ button {
   background: #fee2e2;
   color: #991b1b;
   font-weight: 800;
+}
+
+.small-note {
+  margin: 0;
+  color: #64748b;
+  font-size: 0.86rem;
+  font-weight: 700;
 }

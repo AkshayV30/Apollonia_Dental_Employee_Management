@@ -2,17 +2,26 @@
   <section class="auth-card">
     <div class="brand">
       <span>ADP</span>
+
       <div>
         <p>Apollonia Dental Practice</p>
         <h1>Employee Management</h1>
       </div>
     </div>
 
-    <form [formGroup]="loginForm" (ngSubmit)="login()">
-      <h2>Sign in</h2>
-      <p class="hint">
-        Demo login connects to your backend auth endpoint and stores the JWT token.
-      </p>
+    <div class="mode-tabs">
+      <button type="button" [class.active]="mode() === 'login'" (click)="switchMode('login')">
+        Login
+      </button>
+
+      <button type="button" [class.active]="mode() === 'signup'" (click)="switchMode('signup')">
+        Signup
+      </button>
+    </div>
+
+    <form [formGroup]="mode() === 'login' ? loginForm : signupForm" (ngSubmit)="submit()">
+      <h2>{{ title() }}</h2>
+      <p class="hint">{{ subtitle() }}</p>
 
       @if (error()) {
         <div class="alert">
@@ -20,18 +29,35 @@
         </div>
       }
 
+      @if (mode() === 'signup') {
+        <label>
+          Name
+          <input type="text" formControlName="name" placeholder="Admin User" />
+        </label>
+      }
+
       <label>
         Email
-        <input type="email" formControlName="email" />
+        <input type="email" formControlName="email" placeholder="admin@apollonia.local" />
       </label>
 
       <label>
         Password
-        <input type="password" formControlName="password" />
+        <input type="password" formControlName="password" placeholder="Minimum 8 characters" />
       </label>
 
+      @if (mode() === 'signup') {
+        <p class="small-note">
+          First user for this tenant becomes ADMIN. Later users become STAFF.
+        </p>
+      }
+
       <button type="submit" [disabled]="loading()">
-        {{ loading() ? 'Signing in...' : 'Sign in' }}
+        @if (loading()) {
+          Please wait...
+        } @else {
+          {{ mode() === 'login' ? 'Sign in' : 'Create account' }}
+        }
       </button>
     </form>
   </section>

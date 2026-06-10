@@ -11,5 +11,8 @@ export class DashboardHero {
   readonly departmentCount = input.required<number>();
   readonly patientCount = input.required<number>();
 
+  readonly userName = input.required<string>();
+  readonly userRole = input.required<string>();
+
   readonly logoutClicked = output<void>();
 }

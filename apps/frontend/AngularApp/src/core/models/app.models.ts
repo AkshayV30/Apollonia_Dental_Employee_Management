@@ -1,3 +1,35 @@
+export type UserRole = 'ADMIN' | 'STAFF' | 'VIEWER';
+export interface AuthUser {
+  id: string;
+  tenant_id: string;
+  name: string;
+  email: string;
+  role: UserRole;
+  status: string;
+  created_at?: string;
+  updated_at?: string;
+}
+
+export interface SignupPayload {
+  name: string;
+  email: string;
+  password: string;
+}
+
+export interface LoginPayload {
+  email?: string;
+  password?: string;
+}
+
+export interface LoginResponse {
+  token: string;
+}
+
+export interface AuthResponse {
+  message: string;
+  token: string;
+  user: AuthUser;
+}
 export interface Department {
   id: string;
   department_id: string;
@@ -37,15 +69,6 @@ export interface DepartmentWiseEmployees {
   department_id: string;
   name: string;
   employees: Employee[];
-}
-
-export interface LoginPayload {
-  email?: string;
-  password?: string;
-}
-
-export interface LoginResponse {
-  token: string;
 }
 
 export interface CreateDepartmentPayload {

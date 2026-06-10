@@ -3,6 +3,8 @@
     [employeeCount]="employeeCount()"
     [departmentCount]="departmentCount()"
     [patientCount]="patientCount()"
+    [userName]="currentUser()?.name || 'User'"
+    [userRole]="currentUser()?.role || 'VIEWER'"
     (logoutClicked)="logout()"
   />
 

@@ -43,6 +43,8 @@ export class Dashboard implements OnInit {
   private readonly auth = inject(AuthService);
   private readonly router = inject(Router);
 
+  readonly currentUser = this.auth.currentUser;
+
   readonly loading = signal(false);
   readonly error = signal('');
 

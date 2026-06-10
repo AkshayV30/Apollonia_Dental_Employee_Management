@@ -24,6 +24,27 @@
   }
 }
 
+.user-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 18px;
+  padding: 9px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.16);
+
+  span {
+    font-weight: 800;
+  }
+
+  strong {
+    padding: 4px 8px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.2);
+    font-size: 0.78rem;
+  }
+}
+
 .eyebrow {
   margin: 0 0 10px;
   text-transform: uppercase;
