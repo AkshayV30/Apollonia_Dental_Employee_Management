@@ -1,0 +1,57 @@
+// ============================================================
+// EMPLOYEE
+// ============================================================
+
+model Employee {
+  id Uuid @id @default(uuid())
+
+  tenantId Uuid @map("tenant_id")
+
+  employeeCode String @map("employee_code")
+
+  firstName String @map("first_name")
+
+  lastName String @map("last_name")
+
+  dateOfJoining DateTime? @map("date_of_joining")
+
+  specialization String?
+
+  yearsOfExperience Int @default(0) @map("years_of_experience")
+
+  backgroundInfo String? @map("background_info")
+
+  createdAt DateTime @default(now()) @map("created_at")
+
+  updatedAt temporal.updatedAt()
+
+  // ----------------------------------------------------------
+  // Relations
+  // ----------------------------------------------------------
+
+  tenant Tenant @relation(
+    fields: [tenantId],
+    references: [id],
+    onDelete: Cascade
+  )
+
+  departments EmployeeDepartment[]
+
+  patients EmployeePatient[]
+
+  // ----------------------------------------------------------
+  // Constraints / indexes
+  // ----------------------------------------------------------
+
+  @@unique([tenantId, employeeCode])
+
+  @@index([tenantId, firstName, lastName])
+
+  @@index([tenantId, specialization])
+
+  @@map("employees")
+}
+
+
+
+

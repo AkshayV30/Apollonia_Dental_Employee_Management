@@ -1,0 +1,30 @@
+# --- STAGE 1: Build & Generate Prisma ---
+FROM node:24-alpine AS builder
+WORKDIR /app
+COPY package*.json ./
+# npm ci uses npm v11 speed enhancements natively
+RUN npm ci
+COPY . .
+RUN npx prisma generate
+RUN npm run build
+
+# --- STAGE 2: Lightweight Production Runtime ---
+FROM node:24-alpine AS runner
+WORKDIR /app
+ENV NODE_ENV=production
+
+# Install only production dependencies
+COPY package*.json ./
+RUN npm ci --only=production
+
+# Copy built app layers and the Prisma runtime metadata
+COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/src/generated ./src/generated
+COPY --from=builder /app/prisma ./prisma
+COPY --from=builder /app/prisma.config.ts ./prisma.config.ts
+
+# Apply the built-in non-root Node user for runtime security
+USER node
+
+EXPOSE 5000
+CMD ["node", "dist/main.js"]

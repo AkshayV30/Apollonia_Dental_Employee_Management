@@ -1,0 +1,197 @@
+// use prisma-8
+
+// ============================================================================
+// APOLLONIA DENTAL EMS
+// ============================================================================
+// Prisma ORM 8 + PostgreSQL 18
+//
+// This directory contains the application's Prisma ORM 8 data contract.
+//
+// The contract is intentionally split into domain-specific files so that
+// individual models, enums, relationships, and reference data remain easy
+// to maintain as the EMS platform grows.
+//
+// -----------------------------------------------------------------------------
+// CONTRACT RESPONSIBILITIES
+// -----------------------------------------------------------------------------
+//
+// This contract defines:
+//
+// - PostgreSQL-backed application models
+// - Model fields and their database types
+// - Primary keys and generated identifiers
+// - Foreign-key relationships
+// - One-to-many and many-to-many relationships
+// - Unique constraints
+// - Database indexes
+// - Delete/update relationship behavior
+// - PostgreSQL table and column mappings
+// - Application enums
+// - Prisma ORM 8 temporal timestamp behavior
+//
+// -----------------------------------------------------------------------------
+// POSTGRESQL 18 TYPE MAPPING
+// -----------------------------------------------------------------------------
+//
+// The contract uses Prisma types that map to PostgreSQL types:
+//
+//   Uuid      -> PostgreSQL uuid
+//   String    -> PostgreSQL text
+//   DateTime  -> PostgreSQL timestamptz
+//   Decimal   -> PostgreSQL numeric
+//   Int       -> PostgreSQL integer
+//
+// PostgreSQL remains the persistence layer; Prisma defines the application
+// data contract and relationship model exposed to the application.
+//
+// -----------------------------------------------------------------------------
+// MULTI-TENANCY
+// -----------------------------------------------------------------------------
+//
+// Tenant is the root ownership boundary for tenant-scoped application data.
+//
+// Tenant-owned entities include:
+//
+//   Tenant
+//   User
+//   Employee
+//   Department
+//   Patient
+//
+// Where appropriate, tenant ownership is inherited through a parent relation.
+// For example:
+//
+//   Revenue -> Patient -> Tenant
+//
+
+// ============================================================================
+// CONTRACT MODULES
+// ============================================================================
+
+
+// ============================================================================
+// ENUMS
+// ============================================================================
+//
+// Application-level enum definitions.
+//
+// Currently contains:
+//
+// - UserRole
+// - UserStatus
+// ============================================================================
+
+include "enums/user.prisma"
+
+
+// ============================================================================
+// TENANT
+// ============================================================================
+//
+// Root multi-tenancy model.
+//
+// Defines the tenant ownership boundary used throughout the EMS.
+//
+// Contains:
+//
+// - Tenant
+// ============================================================================
+
+include "tenant/tenant.prisma"
+
+
+// ============================================================================
+// IDENTITY
+// ============================================================================
+//
+// Application authentication and user identity.
+//
+// Contains:
+//
+// - User
+//
+// User records belong to exactly one Tenant.
+// ============================================================================
+
+include "identity/user.prisma"
+
+
+// ============================================================================
+// ORGANIZATION
+// ============================================================================
+//
+// Organizational structure and workforce management.
+//
+// Contains:
+//
+// - Department
+// - Employee
+// - EmployeeDepartment
+//
+// EmployeeDepartment represents the explicit many-to-many relationship
+// between employees and departments.
+// ============================================================================
+
+include "organization/department.prisma"
+
+include "organization/employee.prisma"
+
+include "organization/employee-department.prisma"
+
+
+// ============================================================================
+// PATIENT
+// ============================================================================
+//
+// Patient management and employee/patient assignments.
+//
+// Contains:
+//
+// - Patient
+// - EmployeePatient
+//
+// EmployeePatient represents the explicit many-to-many relationship
+// between employees and patients.
+// ============================================================================
+
+include "patient/patient.prisma"
+
+include "patient/employee-patient.prisma"
+
+
+// ============================================================================
+// FINANCE
+// ============================================================================
+//
+// Financial and patient revenue information.
+//
+// Contains:
+//
+// - Revenue
+//
+// Revenue belongs to a Patient and therefore inherits tenant ownership
+// through the Patient -> Tenant relationship.
+// ============================================================================
+
+include "finance/revenue.prisma"
+
+
+// ============================================================================
+// REFERENCE DATA
+// ============================================================================
+//
+// Application-wide reference/master data.
+//
+// Contains:
+//
+// - Training
+// - Specialization
+//
+// ============================================================================
+
+include "reference/training.prisma"
+
+include "reference/specialization.prisma"
+
+
+

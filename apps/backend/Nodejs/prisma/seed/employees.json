@@ -1,0 +1,54 @@
+{
+  "employees": [
+    {
+      "first_name": "Alfred",
+      "last_name": "Christensen",
+      "department": "General Dentistry"
+    },
+    {
+      "first_name": "John",
+      "last_name": "Dudley",
+      "department": "General Dentistry"
+    },
+    {
+      "first_name": "Janet",
+      "last_name": "Doe",
+      "department": "General Dentistry"
+    },
+    {
+      "first_name": "Francisco",
+      "last_name": "Willard",
+      "department": "Pediatric Dentistry"
+    },
+    {
+      "first_name": "Sarah",
+      "last_name": "Alvarez",
+      "department": "Pediatric Dentistry"
+    },
+    {
+      "first_name": "Lisa",
+      "last_name": "Harris",
+      "department": "Restorative Dentistry"
+    },
+    {
+      "first_name": "Danny",
+      "last_name": "Perez",
+      "department": "Restorative Dentistry"
+    },
+    {
+      "first_name": "Constance",
+      "last_name": "Smith",
+      "department": "Surgery"
+    },
+    {
+      "first_name": "Leslie",
+      "last_name": "Roche",
+      "department": "Orthodontics"
+    },
+    {
+      "first_name": "Lisa",
+      "last_name": "Harris",
+      "department": "Orthodontics"
+    }
+  ]
+}

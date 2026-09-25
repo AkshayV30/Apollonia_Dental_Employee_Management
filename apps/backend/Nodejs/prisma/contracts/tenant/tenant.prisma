@@ -1,0 +1,32 @@
+// ============================================================
+// TENANT
+// ============================================================
+
+model Tenant {
+  // PostgreSQL native UUID primary key.
+  id Uuid @id @default(uuid())
+
+  // Human-readable tenant name.
+  name String
+
+  // Globally unique tenant identifier used by routing/auth.
+  slug String @unique
+
+  // Set once when the row is created.
+  createdAt DateTime @default(now()) @map("created_at")
+
+  // Automatically updated whenever this record changes.
+  updatedAt temporal.updatedAt()
+
+  // ----------------------------------------------------------
+  // Relations
+  // ----------------------------------------------------------
+
+  users       User[]
+  employees   Employee[]
+  departments Department[]
+  patients    Patient[]
+
+  // Physical PostgreSQL table name.
+  @@map("tenants")
+}

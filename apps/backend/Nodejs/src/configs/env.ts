@@ -1,5 +1,4 @@
-import dotenv from "dotenv";
-dotenv.config();
+import "dotenv/config";
 
 export type JwtExpiry =
   | `${number}ms`
@@ -11,86 +10,63 @@ export type JwtExpiry =
   | `${number}y`
   | number;
 
-function required(name: string, value?: string): string {
+/* ----------------------------------
+ * Helpers & Validators
+ * ---------------------------------- */
+
+function required(name: string): string {
+  const value = process.env[name];
   if (!value) {
     throw new Error(`❌ Missing required environment variable: ${name}`);
   }
   return value;
 }
 
-function numberFromEnv(
-  name: string,
-  value: string | undefined,
-  fallback: number,
-) {
-  if (!value) {
-    return fallback;
-  }
+function integerFromEnv(name: string, fallback: number): number {
+  const value = process.env[name];
+  if (!value) return fallback;
 
   const parsed = Number(value);
-
-  if (Number.isNaN(parsed)) {
-    throw new Error(`❌ Invalid number for environment variable: ${name}`);
+  if (!Number.isInteger(parsed) || parsed <= 0) {
+    throw new Error(
+      `❌ Environment variable ${name} must be a positive integer`,
+    );
   }
-
   return parsed;
 }
 
-function jwtExpiryFromEnv(
-  value: string | undefined,
-  fallback: JwtExpiry,
-): JwtExpiry {
-  if (!value) {
-    return fallback;
-  }
+function jwtExpiryFromEnv(fallback: JwtExpiry): JwtExpiry {
+  const value = process.env.JWT_ACCESS_EXPIRES_IN;
+  if (!value) return fallback;
 
-  if (/^\d+$/.test(value)) {
-    return Number(value);
-  }
-
-  if (/^\d+(ms|s|m|h|d|w|y)$/.test(value)) {
-    return value as JwtExpiry;
-  }
+  if (/^\d+\$/.test(value)) return Number(value);
+  if (/^\d+(ms|s|m|h|d|w|y)\$/.test(value)) return value as JwtExpiry;
 
   throw new Error(
     "❌ Invalid JWT_ACCESS_EXPIRES_IN. Use values like 15m, 1h, 7d, or 3600",
   );
 }
 
-export const CONFIG = {
-  /* ----------------------------------
-   * Runtime
-   * ---------------------------------- */
+/* ----------------------------------
+ * Unified Configuration
+ * ---------------------------------- */
+
+export const CONFIG = Object.freeze({
+  /* Runtime */
   NODE_ENV: process.env.NODE_ENV ?? "development",
 
-  /* ----------------------------------
-   * Server
-   * ---------------------------------- */
+  /* Server */
   PROTOCOL: process.env.PROTOCOL ?? "http",
   HOST: process.env.HOST ?? "0.0.0.0",
-  PORT: Number(process.env.PORT ?? 5000),
-
+  PORT: integerFromEnv("PORT", 5000),
   PUBLIC_URL: process.env.PUBLIC_URL,
 
-  /* ----------------------------------
-   * Database
-   * ---------------------------------- */
+  /* Database */
   DB_MODE: process.env.DATABASE_MODE,
-  DATABASE_URL: required("DATABASE_URL", process.env.DATABASE_URL),
+  DATABASE_URL: required("DATABASE_URL"),
 
-  /* ----------------------------------
-   * Security
-   * ---------------------------------- */
-  JWT_SECRET: required("JWT_SECRET", process.env.JWT_SECRET),
-
-  JWT_ACCESS_EXPIRES_IN: jwtExpiryFromEnv(
-    process.env.JWT_ACCESS_EXPIRES_IN,
-    "1h",
-  ),
-
-  PASSWORD_SALT_ROUNDS: numberFromEnv(
-    "PASSWORD_SALT_ROUNDS",
-    process.env.PASSWORD_SALT_ROUNDS,
-    12,
-  ),
-} as const;
+  /* Security */
+  JWT_SECRET: required("JWT_SECRET"),
+  JWT_ACCESS_EXPIRES_IN: jwtExpiryFromEnv("1h"),
+  PASSWORD_SALT_ROUNDS: integerFromEnv("PASSWORD_SALT_ROUNDS", 12),
+});

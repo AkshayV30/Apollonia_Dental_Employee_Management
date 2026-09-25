@@ -1,0 +1,37 @@
+// ============================================================
+// REVENUE
+// ============================================================
+//
+// Tenant ownership:
+// Revenue -> Patient -> Tenant
+//
+// tenantId is intentionally not duplicated here.
+// ============================================================
+
+model Revenue {
+  id Uuid @id @default(uuid())
+
+  patientId Uuid @map("patient_id")
+
+  amount Decimal
+
+  description String?
+
+  revenueDate DateTime @default(now()) @map("revenue_date")
+
+  createdAt DateTime @default(now()) @map("created_at")
+
+  // ----------------------------------------------------------
+  // Relations
+  // ----------------------------------------------------------
+
+  patient Patient @relation(
+    fields: [patientId],
+    references: [id],
+    onDelete: Cascade
+  )
+
+  @@index([patientId, revenueDate])
+
+  @@map("revenues")
+}

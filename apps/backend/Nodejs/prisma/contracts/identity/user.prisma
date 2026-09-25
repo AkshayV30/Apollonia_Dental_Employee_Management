@@ -1,0 +1,45 @@
+// ============================================================
+// USER
+// ============================================================
+
+model User {
+  id Uuid @id @default(uuid())
+
+  tenantId Uuid @map("tenant_id")
+
+  name String
+
+  email String
+
+  passwordHash String @map("password_hash")
+
+  role UserRole @default(STAFF)
+
+  status UserStatus @default(ACTIVE)
+
+  lastLoginAt DateTime? @map("last_login_at")
+
+  createdAt DateTime @default(now()) @map("created_at")
+
+  updatedAt temporal.updatedAt()
+
+  // ----------------------------------------------------------
+  // Relations
+  // ----------------------------------------------------------
+
+  tenant Tenant @relation(
+    fields: [tenantId],
+    references: [id],
+    onDelete: Cascade
+  )
+
+  // ----------------------------------------------------------
+  // Constraints / indexes
+  // ----------------------------------------------------------
+
+  @@unique([tenantId, email])
+
+  @@index([tenantId, role])
+
+  @@map("users")
+}

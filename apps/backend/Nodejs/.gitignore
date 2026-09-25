@@ -1,17 +1,22 @@
-/public/images
-*.jpg
-*.png
-*.webp
-*.gif
-
-# Node
-/node_modules
+# Dependencies & Build Outputs
+node_modules/
+dist/
+coverage/
 npm-debug.log
 yarn-error.log
 
+# Environment & Secrets
+.env
+.env.*
+!.env.example
 
+# Public Assets
+/public/images/*.jpg
+/public/images/*.png
+/public/images/*.webp
+/public/images/*.gif
 
-# Visual Studio Code
+# VS Code & History
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
@@ -19,13 +24,12 @@ yarn-error.log
 !.vscode/extensions.json
 .history/*
 
+# Database & Generated Files
+/src/seed/*.json
+/src/generated/prisma/
+src/prisma/contract.json
+src/prisma/contract.d.ts
 
-# System files
+# System Files
 .DS_Store
 Thumbs.db
-
-
-.env
-
-/src/seed/*.json
-/src/generated/prisma

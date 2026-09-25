@@ -1,0 +1,15 @@
+// ============================================================
+// TRAINING
+// ============================================================
+
+model Training {
+  id Uuid @id @default(uuid())
+
+  title String
+
+  description String?
+
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("trainings")
+}

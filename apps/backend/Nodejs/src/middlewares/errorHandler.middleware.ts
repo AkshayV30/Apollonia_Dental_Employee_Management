@@ -1,43 +1,68 @@
-import { Request, Response, NextFunction } from "express";
+import { PrismaClientKnownRequestError } from "@prisma/client/runtime/client";
+import type { Request, Response, NextFunction } from "express";
 
-type ErrorHandlerFn = (err: any, res: Response) => Response | undefined;
+type PrismaErrorHandlerFn = (
+  err: PrismaClientKnownRequestError,
+  res: Response,
+) => Response;
 
-const prismaErrorHandlers: Record<string, ErrorHandlerFn> = {
+const prismaErrorHandlers: Record<string, PrismaErrorHandlerFn> = {
   P2002: (err, res) =>
     res.status(409).json({
       error: "Duplicate record",
-      details: err?.meta,
+      details: err.meta,
     }),
 
   P2025: (err, res) =>
     res.status(404).json({
       error: "Record not found",
-      details: err?.meta,
+      details: err.meta,
     }),
 };
 
 export function errorHandler(
-  err: any,
+  err: unknown,
   _req: Request,
   res: Response,
   _next: NextFunction,
 ) {
-  console.error("🔥 ERROR HANDLER CAUGHT:", {
-    name: err?.name,
-    code: err?.code,
-    message: err?.message,
-    stack: err?.stack,
-  });
+  let errorName = "UnknownError";
+  let errorMessage = "An unhandled exception occurred.";
+  let errorStack: string | undefined = undefined;
+  let errorCode: string | undefined = undefined;
 
-  const prismaHandler = prismaErrorHandlers[err?.code];
+  if (err instanceof Error) {
+    errorName = err.name;
+    errorMessage = err.message;
+    errorStack = err.stack;
 
-  if (prismaHandler) {
-    return prismaHandler(err, res);
+    // FIX 2: Check standard index fields using unknown double-casting to bypass index-signature strictness
+    const recordErr = err as unknown as Record<string, unknown>;
+    if ("code" in recordErr && typeof recordErr.code === "string") {
+      errorCode = recordErr.code;
+    }
+  } else if (typeof err === "string") {
+    errorMessage = err;
   }
 
-  if (err?.message?.startsWith("Tenant not found")) {
+  console.error("🔥 ERROR HANDLER CAUGHT:", {
+    name: errorName,
+    code: errorCode,
+    message: errorMessage,
+    stack: errorStack,
+  });
+
+  // FIX 3: Evaluate directly against the class constructor imported from the database adapter package
+  if (err instanceof PrismaClientKnownRequestError) {
+    const prismaHandler = prismaErrorHandlers[err.code];
+    if (prismaHandler) {
+      return prismaHandler(err, res);
+    }
+  }
+
+  if (errorMessage.startsWith("Tenant not found")) {
     return res.status(404).json({
-      error: err.message,
+      error: errorMessage,
     });
   }
 

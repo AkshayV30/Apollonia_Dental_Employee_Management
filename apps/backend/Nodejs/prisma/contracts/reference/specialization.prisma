@@ -1,0 +1,13 @@
+// ============================================================
+// SPECIALIZATION
+// ============================================================
+
+model Specialization {
+  id Uuid @id @default(uuid())
+
+  name String @unique
+
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("specializations")
+}

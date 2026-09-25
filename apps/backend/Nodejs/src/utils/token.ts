@@ -1,7 +1,7 @@
-import jwt, { SignOptions } from "jsonwebtoken";
+import jwt, { type SignOptions } from "jsonwebtoken";
 
 import { CONFIG } from "../configs/env.js";
-import { AuthUser } from "../types/auth.js";
+import type { AuthUser } from "../types/auth.js";
 
 export function signAccessToken(user: AuthUser): string {
   const payload: AuthUser = {

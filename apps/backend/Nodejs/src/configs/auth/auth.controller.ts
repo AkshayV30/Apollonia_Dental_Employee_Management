@@ -1,10 +1,10 @@
-import { Request, Response, NextFunction } from "express";
+import { type Request, type Response, type NextFunction } from "express";
 
 import { prisma } from "../database/prisma.js";
 import { getOrCreateTenant } from "../../utils/tenant.js";
 import { hashPassword, verifyPassword } from "../../utils/password.js";
 import { signAccessToken } from "../../utils/token.js";
-import { AuthUser, UserRole } from "../../types/auth.js";
+import type { AuthUser, UserRole } from "../../types/auth.js";
 
 function normalizeEmail(email: string) {
   return email.trim().toLowerCase();

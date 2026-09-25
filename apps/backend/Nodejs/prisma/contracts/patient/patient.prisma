@@ -1,0 +1,45 @@
+// ============================================================
+// PATIENT
+// ============================================================
+
+model Patient {
+  id Uuid @id @default(uuid())
+
+  tenantId Uuid @map("tenant_id")
+
+  patientCode String @map("patient_code")
+
+  patientName String @map("patient_name")
+
+  patientImage String? @map("patient_image")
+
+  treatmentNotes String? @map("treatment_notes")
+
+  createdAt DateTime @default(now()) @map("created_at")
+
+  updatedAt temporal.updatedAt()
+
+  // ----------------------------------------------------------
+  // Relations
+  // ----------------------------------------------------------
+
+  tenant Tenant @relation(
+    fields: [tenantId],
+    references: [id],
+    onDelete: Cascade
+  )
+
+  employees EmployeePatient[]
+
+  revenues Revenue[]
+
+  // ----------------------------------------------------------
+  // Constraints / indexes
+  // ----------------------------------------------------------
+
+  @@unique([tenantId, patientCode])
+
+  @@index([tenantId, patientName])
+
+  @@map("patients")
+}

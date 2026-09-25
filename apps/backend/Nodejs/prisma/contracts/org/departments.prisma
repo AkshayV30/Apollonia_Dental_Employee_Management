@@ -1,0 +1,39 @@
+// ============================================================
+// DEPARTMENT
+// ============================================================
+
+model Department {
+  id Uuid @id @default(uuid())
+
+  tenantId Uuid @map("tenant_id")
+
+  departmentCode String @map("department_code")
+
+  name String
+
+  createdAt DateTime @default(now()) @map("created_at")
+
+  updatedAt temporal.updatedAt()
+
+  // ----------------------------------------------------------
+  // Relations
+  // ----------------------------------------------------------
+
+  tenant Tenant @relation(
+    fields: [tenantId],
+    references: [id],
+    onDelete: Cascade
+  )
+
+  employees EmployeeDepartment[]
+
+  // ----------------------------------------------------------
+  // Constraints
+  // ----------------------------------------------------------
+
+  @@unique([tenantId, departmentCode])
+
+  @@unique([tenantId, name])
+
+  @@map("departments")
+}

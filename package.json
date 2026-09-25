@@ -1,0 +1,15 @@
+{
+  "name": "apollonia-dental-ems-workspace",
+  "version": "2.0.0",
+  "private": true,
+  "scripts": {
+    "infra:up": "docker compose -f platform/docker/docker-compose.yml up --build -d",
+    "infra:down": "docker compose -f platform/docker/docker-compose.yml down",
+    "infra:logs": "docker compose -f platform/docker/docker-compose.yml logs -f",
+    "db:emit": "npm --prefix apps/backend/nodejs run prisma:emit",
+    "db:verify": "npm --prefix apps/backend/nodejs run prisma:verify",
+    "db:plan": "npm --prefix apps/backend/nodejs run db:plan",
+    "db:migrate": "npm --prefix apps/backend/nodejs run db:migrate",
+    "db:seed": "npm --prefix apps/backend/nodejs run seed"
+  }
+}

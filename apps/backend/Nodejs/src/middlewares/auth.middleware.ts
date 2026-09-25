@@ -1,5 +1,5 @@
 import { StatusCodes } from "http-status-codes";
-import { Request, Response, NextFunction } from "express";
+import type { Request, Response, NextFunction } from "express";
 
 import { verifyAccessToken } from "../utils/token.js";
 
@@ -12,7 +12,14 @@ const auth = (req: Request, res: Response, next: NextFunction) => {
     });
   }
 
-  const token = header.split(" ")[1];
+  const token = header.split(" ")[1] ?? "";
+
+  // Check if the token split actually succeeded and gave us a string
+  if (!token) {
+    return res.status(StatusCodes.UNAUTHORIZED).json({
+      error: "Malformed authorization token",
+    });
+  }
 
   try {
     const decoded = verifyAccessToken(token);

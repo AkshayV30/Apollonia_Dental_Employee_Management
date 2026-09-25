@@ -1,0 +1,31 @@
+model EmployeePatient {
+  // IMPORTANT:
+  // These must be Uuid because Employee.id and Patient.id
+  // are PostgreSQL uuid columns.
+  employeeId Uuid @map("employee_id")
+
+  patientId Uuid @map("patient_id")
+
+  assignedAt DateTime @default(now()) @map("assigned_at")
+
+  // ----------------------------------------------------------
+  // Relations
+  // ----------------------------------------------------------
+
+  employee Employee @relation(
+    fields: [employeeId],
+    references: [id],
+    onDelete: Cascade
+  )
+
+  patient Patient @relation(
+    fields: [patientId],
+    references: [id],
+    onDelete: Cascade
+  )
+
+  // Prevent duplicate employee/patient assignments.
+  @@id([employeeId, patientId])
+
+  @@map("employee_patients")
+}
