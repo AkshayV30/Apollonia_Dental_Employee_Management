@@ -1,3 +1,5 @@
+// use prisma-8
+
 model EmployeePatient {
   // IMPORTANT:
   // These must be Uuid because Employee.id and Patient.id

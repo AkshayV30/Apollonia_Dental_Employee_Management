@@ -1,3 +1,5 @@
+// use prisma-8
+
 // ============================================================
 // REVENUE
 // ============================================================
@@ -9,10 +11,12 @@
 // ============================================================
 
 model Revenue {
+  // Prisma 8 natively uses the Uuid type directly
   id Uuid @id @default(uuid())
 
   patientId Uuid @map("patient_id")
 
+  // standard PSL decimal type mapping
   amount Decimal
 
   description String?

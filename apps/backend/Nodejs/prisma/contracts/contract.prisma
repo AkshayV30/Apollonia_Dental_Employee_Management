@@ -192,6 +192,3 @@ include "finance/revenue.prisma"
 include "reference/training.prisma"
 
 include "reference/specialization.prisma"
-
-
-

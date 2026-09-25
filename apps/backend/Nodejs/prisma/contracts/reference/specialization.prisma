@@ -1,8 +1,11 @@
+// use prisma-8
+
 // ============================================================
 // SPECIALIZATION
 // ============================================================
 
 model Specialization {
+  // Prisma 8 natively uses direct type tokens like Uuid instead of @db.Uuid
   id Uuid @id @default(uuid())
 
   name String @unique

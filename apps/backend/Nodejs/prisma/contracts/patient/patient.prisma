@@ -1,8 +1,11 @@
+// use prisma-8
+
 // ============================================================
 // PATIENT
 // ============================================================
 
 model Patient {
+  // Prisma 8 uses the pure Uuid type token directly without legacy db modifiers
   id Uuid @id @default(uuid())
 
   tenantId Uuid @map("tenant_id")
@@ -17,7 +20,7 @@ model Patient {
 
   createdAt DateTime @default(now()) @map("created_at")
 
-  updatedAt temporal.updatedAt()
+  updatedAt DateTime @updatedAt @map("updated_at")
 
   // ----------------------------------------------------------
   // Relations

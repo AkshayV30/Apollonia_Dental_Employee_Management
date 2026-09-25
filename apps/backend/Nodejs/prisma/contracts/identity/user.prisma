@@ -1,8 +1,11 @@
+// use prisma-8
+
 // ============================================================
 // USER
 // ============================================================
 
 model User {
+  // Prisma 8 uses direct type tokens like Uuid instead of String @db.Uuid
   id Uuid @id @default(uuid())
 
   tenantId Uuid @map("tenant_id")
@@ -21,7 +24,7 @@ model User {
 
   createdAt DateTime @default(now()) @map("created_at")
 
-  updatedAt temporal.updatedAt()
+  updatedAt DateTime @updatedAt @map("updated_at")
 
   // ----------------------------------------------------------
   // Relations
