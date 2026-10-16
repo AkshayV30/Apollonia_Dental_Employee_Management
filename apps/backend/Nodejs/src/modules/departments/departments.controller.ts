@@ -76,6 +76,9 @@ export async function getEmployeesByDepartment(
   try {
     const tenant = await getOrCreateTenant(req);
     const { departmentId } = req.params;
+    if (!departmentId) {
+      return res.status(400).json({ error: "Department ID is required" });
+    }
 
     const department = await prisma.department.findFirst({
       where: {

@@ -4,20 +4,17 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm ci
 COPY . .
-RUN npm run prisma:emit
+RUN DATABASE_URL=postgresql://user:password@localhost:5432/apollonia npm run prisma:emit
 RUN npm run build
 
-# Runtime image: production packages only; dotenv is copied because env.ts imports it.
+# Runtime image: production dependencies plus the generated Prisma client.
 FROM node:24-alpine AS runner
 WORKDIR /app
 ENV NODE_ENV=production
 COPY package*.json ./
 RUN npm ci --omit=dev && npm cache clean --force
 COPY --from=builder /app/dist ./dist
-COPY --from=builder /app/src/generated ./src/generated
-COPY --from=builder /app/node_modules/dotenv ./node_modules/dotenv
-COPY --from=builder /app/prisma ./prisma
-COPY --from=builder /app/prisma.config.ts ./prisma.config.ts
+COPY --from=builder /app/node_modules/.prisma ./node_modules/.prisma
 USER node
 EXPOSE 5000
 CMD ["node", "dist/server.js"]

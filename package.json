@@ -6,10 +6,10 @@
     "infra:up": "docker compose -f platform/docker/docker-compose.yaml up --build -d",
     "infra:down": "docker compose -f platform/docker/docker-compose.yaml down",
     "infra:logs": "docker compose -f platform/docker/docker-compose.yaml logs -f",
-    "db:emit": "npm --prefix apps/backend/nodejs run prisma:emit",
-    "db:verify": "npm --prefix apps/backend/nodejs run prisma:verify",
-    "db:plan": "npm --prefix apps/backend/nodejs run db:plan",
-    "db:migrate": "npm --prefix apps/backend/nodejs run db:migrate",
-    "db:seed": "npm --prefix apps/backend/nodejs run seed"
+    "db:emit": "npm --prefix apps/backend/Nodejs run prisma:emit",
+    "db:verify": "npm --prefix apps/backend/Nodejs run prisma:verify",
+    "db:plan": "npm --prefix apps/backend/Nodejs run db:plan",
+    "db:migrate": "npm --prefix apps/backend/Nodejs run db:migrate",
+    "db:seed": "npm --prefix apps/backend/Nodejs run seed"
   }
 }

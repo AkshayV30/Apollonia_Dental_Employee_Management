@@ -130,6 +130,9 @@ export async function getDepartmentsByEmployee(
   try {
     const tenant = await getOrCreateTenant(req);
     const { employeeId } = req.params;
+    if (!employeeId) {
+      return res.status(400).json({ error: "Employee ID is required" });
+    }
 
     const employee = await prisma.employee.findFirst({
       where: {

@@ -18,7 +18,7 @@ model Tenant {
   createdAt DateTime @default(now()) @map("created_at")
 
   // Automatically updated whenever this record changes.
-  updatedAt DateTime @updatedAt @map("updated_at")
+  updatedAt temporal.updatedAt() @map("updated_at")
 
   // ----------------------------------------------------------
   // Relations

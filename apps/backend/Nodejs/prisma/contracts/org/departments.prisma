@@ -17,7 +17,7 @@ model Department {
   createdAt DateTime @default(now()) @map("created_at")
 
   // Fixed syntax error: Replaced invalid custom temporal method with Prisma's native decorator
-  updatedAt DateTime @updatedAt @map("updated_at")
+  updatedAt temporal.updatedAt() @map("updated_at")
 
   // ----------------------------------------------------------
   // Relations
