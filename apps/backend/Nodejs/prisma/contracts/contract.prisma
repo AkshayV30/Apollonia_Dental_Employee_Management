@@ -64,6 +64,8 @@
 //   Revenue -> Patient -> Tenant
 //
 
+
+
 // ============================================================================
 // CONTRACT MODULES
 // ============================================================================
@@ -81,7 +83,8 @@
 // - UserStatus
 // ============================================================================
 
-include "enums/user.prisma"
+include "enums/user.prisma" {
+}
 
 
 // ============================================================================
@@ -97,7 +100,9 @@ include "enums/user.prisma"
 // - Tenant
 // ============================================================================
 
-include "tenant/tenant.prisma"
+include "tenant/tenant.prisma"{
+
+}
 
 
 // ============================================================================
@@ -113,7 +118,9 @@ include "tenant/tenant.prisma"
 // User records belong to exactly one Tenant.
 // ============================================================================
 
-include "identity/user.prisma"
+include "identity/user.prisma"{
+
+}
 
 
 // ============================================================================
@@ -132,11 +139,17 @@ include "identity/user.prisma"
 // between employees and departments.
 // ============================================================================
 
-include "organization/department.prisma"
+include "organization/department.prisma" {
 
-include "organization/employee.prisma"
+}
 
-include "organization/employee-department.prisma"
+include "organization/employee.prisma"{
+
+}
+
+include "organization/employee-department.prisma"{
+
+}
 
 
 // ============================================================================
@@ -154,9 +167,13 @@ include "organization/employee-department.prisma"
 // between employees and patients.
 // ============================================================================
 
-include "patient/patient.prisma"
+include "patient/patient.prisma"{
 
-include "patient/employee-patient.prisma"
+}
+
+include "patient/employee-patient.prisma"{
+
+}
 
 
 // ============================================================================
@@ -173,7 +190,9 @@ include "patient/employee-patient.prisma"
 // through the Patient -> Tenant relationship.
 // ============================================================================
 
-include "finance/revenue.prisma"
+include "finance/revenue.prisma"{
+
+}
 
 
 // ============================================================================
@@ -189,6 +208,10 @@ include "finance/revenue.prisma"
 //
 // ============================================================================
 
-include "reference/training.prisma"
+include "reference/training.prisma"{
 
-include "reference/specialization.prisma"
+}
+
+include "reference/specialization.prisma"{
+   
+}

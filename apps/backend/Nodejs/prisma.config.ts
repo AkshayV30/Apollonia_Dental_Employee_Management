@@ -1,12 +1,15 @@
-import 'dotenv/config';
-import { definePrismaConfig } from '@prisma/cli-engine';
-import { defineConfig as ormConfig } from '@prisma/orm-postgres/config';
+import "dotenv/config";
+import { definePrismaConfig } from "@prisma/cli-engine";
+import { defineConfig as ormConfig } from "@prisma/orm-postgres/config";
 
 export default definePrismaConfig({
   orm: ormConfig({
-    contract: "./prisma/schema.prisma",
+    contract: "./prisma/contracts/contract.prisma",
+
+    output: "./prisma/generated",
+
     db: {
-      connection: process.env['DATABASE_URL']!,
+      connection: process.env["DATABASE_URL"]!,
     },
   }),
 });

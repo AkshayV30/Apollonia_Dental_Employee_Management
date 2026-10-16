@@ -1,73 +1,60 @@
 services:
   postgres-db:
-    image: postgres:18-alpine
-    container_name: apollonia-dental-db
-
+    image: postgres:16-alpine
     restart: unless-stopped
-
     environment:
-      POSTGRES_USER: apollonia_user
-      POSTGRES_PASSWORD: apollonia_password
-      POSTGRES_DB: apollonia_db
-
+      POSTGRES_USER: ${POSTGRES_USER:-apollonia_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-apollonia_local_only}
+      POSTGRES_DB: ${POSTGRES_DB:-apollonia_db}
     ports:
-      - "5432:5432"
-
+      - "127.0.0.1:${POSTGRES_PORT:-5432}:5432"
     volumes:
       - apollonia_postgres_data:/var/lib/postgresql/data
-
-    shm_size: 256mb
-
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U apollonia_user -d apollonia_db"]
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
       interval: 5s
       timeout: 5s
       retries: 10
       start_period: 10s
-
     networks:
       - apollonia-network
 
   backend:
     build:
-      context: ../../apps/backend/nodejs
-      dockerfile: Dockerfile
-
-    container_name: apollonia-backend
-
+      context: ../../apps/backend/Nodejs
+      dockerfile: DockerFile
     restart: unless-stopped
-
     ports:
-      - "5000:5000"
-
+      - "127.0.0.1:5000:5000"
     environment:
       NODE_ENV: production
+      HOST: 0.0.0.0
       PORT: 5000
-      DATABASE_URL: postgresql://apollonia_user:apollonia_password@postgres-db:5432/apollonia_db
-
+      DATABASE_URL: postgresql://${POSTGRES_USER:-apollonia_user}:${POSTGRES_PASSWORD:-apollonia_local_only}@postgres-db:5432/${POSTGRES_DB:-apollonia_db}?schema=public
+      JWT_SECRET: ${JWT_SECRET:-local-compose-only-change-before-deploy}
+      PASSWORD_SALT_ROUNDS: ${PASSWORD_SALT_ROUNDS:-12}
     depends_on:
       postgres-db:
         condition: service_healthy
-
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:5000/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
     networks:
       - apollonia-network
 
   frontend:
     build:
-      context: ../../apps/frontend/angular-app
+      context: ../../apps/frontend/AngularApp
       dockerfile: Dockerfile
-
-    container_name: apollonia-frontend
-
     restart: unless-stopped
-
     ports:
-      - "4200:80"
-
+      - "127.0.0.1:${FRONTEND_PORT:-4200}:80"
     depends_on:
       backend:
-        condition: service_started
-
+        condition: service_healthy
     networks:
       - apollonia-network
 
