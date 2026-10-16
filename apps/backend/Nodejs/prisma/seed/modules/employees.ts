@@ -1,4 +1,4 @@
-import { DbTransaction } from "../../db.js";
+import type { DbTransaction } from "../../db.js";
 import {
   normalizeExperience,
   parseDate,
@@ -33,12 +33,13 @@ export async function seedEmployees(
 
     const yearsOfExperience = normalizeExperience(employee.years_of_experience);
 
-    await tx.orm.public.Employee.upsert({
-      conflictOn: {
-        tenantId,
-        employeeCode: employee.employee_id,
+    await tx.employee.upsert({
+      where: {
+        tenantId_employeeCode: {
+          tenantId,
+          employeeCode: employee.employee_id,
+        },
       },
-
       update: {
         firstName: employee.first_name,
         lastName: employee.last_name,

@@ -35,6 +35,23 @@ services:
     networks:
       - apollonia-network
 
+  seed:
+    profiles: ["seed"]
+    build:
+      context: ../../apps/backend/Nodejs
+      dockerfile: DockerFile
+      target: builder
+    restart: "no"
+    environment:
+      NODE_ENV: production
+      DATABASE_URL: postgresql://${POSTGRES_USER:-apollonia_user}:${POSTGRES_PASSWORD:-apollonia_local_only}@postgres-db:5432/${POSTGRES_DB:-apollonia_db}?schema=public
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    command: ["npm", "run", "seed"]
+    networks:
+      - apollonia-network
+
   backend:
     build:
       context: ../../apps/backend/Nodejs

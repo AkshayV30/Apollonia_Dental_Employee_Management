@@ -1,4 +1,4 @@
-import { DbTransaction } from "../../db.js";
+import type { DbTransaction } from "../../db.js";
 import type { EmployeeDepartmentLink } from "../seed.types.js";
 
 // ============================================================================
@@ -31,13 +31,8 @@ export async function seedEmployeeDepartments(
   // --------------------------------------------------------------------------
 
   const [employees, departments] = await Promise.all([
-    tx.orm.public.Employee.where({
-      tenantId,
-    }).all(),
-
-    tx.orm.public.Department.where({
-      tenantId,
-    }).all(),
+    tx.employee.findMany({ where: { tenantId } }),
+    tx.department.findMany({ where: { tenantId } }),
   ]);
 
   // --------------------------------------------------------------------------
@@ -107,12 +102,13 @@ export async function seedEmployeeDepartments(
   // --------------------------------------------------------------------------
 
   for (const assignment of assignments.values()) {
-    await tx.orm.public.EmployeeDepartment.upsert({
-      conflictOn: {
-        employeeId: assignment.employeeId,
-        departmentId: assignment.departmentId,
+    await tx.employeeDepartment.upsert({
+      where: {
+        employeeId_departmentId: {
+          employeeId: assignment.employeeId,
+          departmentId: assignment.departmentId,
+        },
       },
-
       update: {},
 
       create: {

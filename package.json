@@ -10,6 +10,6 @@
     "db:verify": "npm --prefix apps/backend/Nodejs run prisma:verify",
     "db:plan": "npm --prefix apps/backend/Nodejs run db:plan",
     "db:migrate": "npm --prefix apps/backend/Nodejs run db:migrate",
-    "db:seed": "npm --prefix apps/backend/Nodejs run seed"
+    "db:seed": "docker compose -f platform/docker/docker-compose.yaml --profile seed run --build --rm seed"
   }
 }

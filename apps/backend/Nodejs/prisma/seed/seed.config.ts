@@ -7,5 +7,5 @@ export const TENANT = {
 
 export const INITIAL_DATA_PATH = path.resolve(
   process.cwd(),
-  "src/seed/initialData.json",
+  "prisma/seed/initialData.json",
 );

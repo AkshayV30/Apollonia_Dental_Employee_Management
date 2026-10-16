@@ -1,4 +1,4 @@
-import { DbTransaction } from "../../db.js";
+import type { DbTransaction } from "../../db.js";
 import type { InitialDepartment } from "../seed.types.js";
 
 // ============================================================================
@@ -18,12 +18,13 @@ export async function seedDepartments(
   departments: InitialDepartment[],
 ): Promise<void> {
   for (const department of departments) {
-    await tx.orm.public.Department.upsert({
-      conflictOn: {
-        tenantId,
-        departmentCode: department.department_id,
+    await tx.department.upsert({
+      where: {
+        tenantId_departmentCode: {
+          tenantId,
+          departmentCode: department.department_id,
+        },
       },
-
       update: {
         name: department.name,
       },

@@ -14,11 +14,8 @@ import { TENANT } from "../seed.config.js";
 // ============================================================================
 
 export async function seedTenant() {
-  return db.orm.public.Tenant.upsert({
-    conflictOn: {
-      slug: TENANT.slug,
-    },
-
+  return db.tenant.upsert({
+    where: { slug: TENANT.slug },
     update: {
       name: TENANT.name,
     },

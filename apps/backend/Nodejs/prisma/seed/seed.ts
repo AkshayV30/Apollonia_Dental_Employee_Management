@@ -43,19 +43,11 @@ async function seed(): Promise<void> {
   // TRANSACTION
   // --------------------------------------------------------------------------
   //
-  // Prisma ORM 8 Contract API:
-  //
-  //   db.transaction(...)
-  //
-  // NOT:
-  //
-  //   db.$transaction(...)
-  //
   // All tenant-owned seed operations are executed atomically.
   // If any operation fails, the transaction is rolled back.
   // --------------------------------------------------------------------------
 
-  await db.transaction(async (tx) => {
+  await db.$transaction(async (tx) => {
     await seedDepartments(tx, tenant.id, data.departments);
 
     await seedEmployees(tx, tenant.id, data.employees);
@@ -67,7 +59,7 @@ async function seed(): Promise<void> {
   // COMPLETE
   // --------------------------------------------------------------------------
 
-  console.log("✅ Apollonia PostgreSQL 18 / Prisma 8 seed completed");
+  console.log("✅ Apollonia PostgreSQL 18 / Prisma 7 seed completed");
 }
 
 // ============================================================================
@@ -78,4 +70,6 @@ void seed().catch((error: unknown) => {
   console.error("❌ Seed failed:", error);
 
   process.exitCode = 1;
+}).finally(async () => {
+  await db.$disconnect();
 });

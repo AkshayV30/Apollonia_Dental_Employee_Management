@@ -1,17 +1,14 @@
 import "dotenv/config";
-import postgres from "@prisma/orm-postgres/runtime";
-import type { Contract } from "./contracts/contract.d";
-import contractJson from "./contracts/contract.json" with { type: "json" };
+import { PrismaPg } from "@prisma/adapter-pg";
+import { Prisma, PrismaClient } from "@prisma/client";
 
-export type DbTransaction = Parameters<Parameters<typeof db.transaction>[0]>[0];
+const connectionString = process.env.DATABASE_URL;
 
-const DATABASE_URL = process.env.DATABASE_URL;
-
-if (!DATABASE_URL) {
+if (!connectionString) {
   throw new Error("DATABASE_URL is not configured");
 }
 
-export const db = postgres<Contract>({
-  contractJson,
-  url: DATABASE_URL,
-});
+const adapter = new PrismaPg({ connectionString });
+
+export const db = new PrismaClient({ adapter });
+export type DbTransaction = Prisma.TransactionClient;
