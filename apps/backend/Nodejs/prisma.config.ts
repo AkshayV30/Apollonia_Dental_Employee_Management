@@ -4,7 +4,7 @@ import { defineConfig as ormConfig } from "@prisma/orm-postgres/config";
 
 export default definePrismaConfig({
   orm: ormConfig({
-    contract: "./prisma/contracts/contract.prisma",
+    contract: "./prisma/contracts/**/*.prisma",
 
     output: "./prisma/generated",
 
